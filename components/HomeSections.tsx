@@ -1,6 +1,7 @@
 import {
   articles,
   capabilities,
+  contactLinks,
   differentials,
   faqs,
   processSteps,
@@ -45,7 +46,7 @@ export function Hero() {
           <p className="hero-lead">Desenvolvemos soluções digitais sob medida para o seu negócio.</p>
           <p className="hero-support">Sites, sistemas, automações e soluções com Inteligência Artificial para transformar ideias em produtos digitais modernos, rápidos e escaláveis.</p>
           <div className="hero-actions">
-            <a href="#contato" className="button button-primary">Solicitar orçamento <span>↗</span></a>
+            <a href={contactLinks.whatsapp} className="button button-primary" target="_blank" rel="noopener noreferrer">Solicitar orçamento <span>↗</span></a>
             <a href="#projetos" className="button button-secondary">Ver projetos <span>↓</span></a>
           </div>
           <div className="founder-signature">
@@ -105,7 +106,7 @@ export function Capabilities() {
               <span className="eyebrow eyebrow-light"><i /> Da ideia à solução</span>
               <h2>Tem uma ideia<br />diferente?</h2>
               <p>Nem todo problema cabe em um pacote pronto. Entendemos o cenário, organizamos as prioridades e construímos a solução adequada.</p>
-              <a className="text-link text-link-light" href="#contato">Conversar sobre uma ideia <span>→</span></a>
+              <a className="text-link text-link-light" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer">Conversar sobre uma ideia <span>→</span></a>
             </div>
             <div className="capability-orbit" aria-label="Tipos de soluções que podem ser desenvolvidas">
               <div className="orbit-grid" aria-hidden="true" />
@@ -290,7 +291,7 @@ export function FAQ() {
         <Reveal>
           <div className="faq-heading">
             <SectionHeading eyebrow="Perguntas frequentes" title={<>Antes de começar,<br />vale saber.</>} text="Respostas diretas para as dúvidas mais comuns sobre escopo, prazo e continuidade." />
-            <a className="text-link" href="#contato">Ainda tem uma dúvida? <span>→</span></a>
+            <a className="text-link" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer">Ainda tem uma dúvida? <span>→</span></a>
           </div>
         </Reveal>
         <Reveal delay={100}>
@@ -309,4 +310,3 @@ export function FAQ() {
 }
 
 export { ContactCTA };
-

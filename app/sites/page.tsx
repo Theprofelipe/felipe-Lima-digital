@@ -5,7 +5,7 @@ import { Navbar } from "../../components/Navbar";
 import { ProjectsCarousel } from "../../components/ProjectsCarousel";
 import { Reveal } from "../../components/Reveal";
 import { SiteDeviceVisual } from "../../components/Visuals";
-import { faqs, processSteps, siteTypes } from "../../data/site";
+import { contactLinks, faqs, processSteps, siteTypes } from "../../data/site";
 
 export const metadata: Metadata = {
   title: "Criação de Sites Profissionais | Felipe Lima Digital",
@@ -33,7 +33,7 @@ export default function SitesPage() {
               <h1>Seu site precisa fazer mais do que <span>parecer bonito.</span></h1>
               <p>Projetamos experiências rápidas, responsivas e confiáveis para apresentar o seu negócio com clareza e transformar visitas em oportunidades.</p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#contato">Solicitar orçamento <span>↗</span></a>
+                <a className="button button-primary" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer">Solicitar orçamento <span>↗</span></a>
                 <a className="button button-secondary" href="#tipos-de-site">Conhecer opções <span>↓</span></a>
               </div>
             </div>
@@ -118,4 +118,3 @@ export default function SitesPage() {
     </>
   );
 }
-

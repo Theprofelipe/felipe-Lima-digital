@@ -3,8 +3,15 @@ type SiteConfig = {
   shortName: string;
   position: string;
   description: string;
-  contact: { email: string; whatsapp: string };
-  social: { github: string; linkedin: string };
+  contact: {
+    email: string;
+    whatsapp: string;
+    whatsappMessage: string;
+    location: string;
+    locationLabel: string;
+    attendance: string;
+  };
+  social: { github: string; linkedin: string; instagram: string };
 };
 
 export const siteConfig: SiteConfig = {
@@ -14,14 +21,26 @@ export const siteConfig: SiteConfig = {
   description:
     "Soluções digitais sob medida: sites, sistemas, automações e inteligência artificial para empresas.",
   contact: {
-    email: "",
-    whatsapp: "",
+    email: "contato.femachado1@gmail.com",
+    whatsapp: "5511989954030",
+    whatsappMessage:
+      "Olá, Felipe! Vim pelo site Felipe Lima Digital e gostaria de conversar sobre um projeto.",
+    location: "São Paulo - SP",
+    locationLabel: "São Paulo - SP · Atendimento remoto",
+    attendance:
+      "Presencial em São Paulo quando aplicável e atendimento remoto.",
   },
   social: {
-    github: "",
+    github: "https://github.com/Theprofelipe",
     linkedin: "",
+    instagram: "",
   },
 };
+
+export const contactLinks = {
+  whatsapp: `https://wa.me/${siteConfig.contact.whatsapp}?text=${encodeURIComponent(siteConfig.contact.whatsappMessage)}`,
+  email: `mailto:${siteConfig.contact.email}`,
+} as const;
 
 export const navigation = [
   { label: "Início", href: "/#inicio" },

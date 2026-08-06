@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { navigation } from "../data/site";
+import { contactLinks, navigation } from "../data/site";
 
 export function Brand() {
   return (
@@ -47,9 +47,9 @@ export function Navbar() {
           ))}
         </nav>
 
-        <Link className="button button-small nav-cta" href="/#contato">
+        <a className="button button-small nav-cta" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer">
           Solicitar orçamento
-        </Link>
+        </a>
 
         <button
           className={`menu-toggle ${open ? "is-open" : ""}`}
@@ -77,9 +77,9 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <Link className="button" href="/#contato" onClick={() => setOpen(false)}>
+          <a className="button" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
             Solicitar orçamento
-          </Link>
+          </a>
         </div>
       </nav>
     </header>

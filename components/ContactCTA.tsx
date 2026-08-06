@@ -1,17 +1,12 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { siteConfig } from "../data/site";
+import { contactLinks } from "../data/site";
 
 export function ContactCTA({ compact = false }: { compact?: boolean }) {
   const [message, setMessage] = useState("");
-  const [summary, setSummary] = useState("");
 
-  const whatsappHref = siteConfig.contact.whatsapp
-    ? `https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`
-    : "";
-
-  const submit = async (event: FormEvent<HTMLFormElement>) => {
+  const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
     const content = [
@@ -20,19 +15,8 @@ export function ContactCTA({ compact = false }: { compact?: boolean }) {
       `Projeto: ${form.get("project")}`,
     ].join("\n");
 
-    if (siteConfig.contact.email) {
-      window.location.href = `mailto:${siteConfig.contact.email}?subject=Novo projeto&body=${encodeURIComponent(content)}`;
-      setMessage("Abrindo seu aplicativo de e-mail…");
-      return;
-    }
-
-    setSummary(content);
-    try {
-      await navigator.clipboard.writeText(content);
-      setMessage("Resumo copiado. Os canais de contato serão adicionados em breve.");
-    } catch {
-      setMessage("Resumo criado. Copie o texto abaixo para guardar sua solicitação.");
-    }
+    window.location.href = `${contactLinks.email}?subject=Novo projeto&body=${encodeURIComponent(content)}`;
+    setMessage("Abrindo seu aplicativo de e-mail…");
   };
 
   return (
@@ -44,11 +28,7 @@ export function ContactCTA({ compact = false }: { compact?: boolean }) {
           <h2>Vamos tirar sua<br />ideia do papel?</h2>
           <p>Conte sobre o seu projeto e vamos entender juntos qual solução faz sentido para o momento do seu negócio.</p>
           <div className="contact-actions">
-            {whatsappHref ? (
-              <a className="button button-light" href={whatsappHref} target="_blank" rel="noreferrer">Falar no WhatsApp <span>↗</span></a>
-            ) : (
-              <span className="button button-ghost-disabled" aria-disabled="true" title="Número ainda não configurado">WhatsApp em breve</span>
-            )}
+            <a className="button button-light" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer">Falar no WhatsApp <span>↗</span></a>
           </div>
         </div>
         <form className="project-form" onSubmit={submit}>
@@ -58,10 +38,8 @@ export function ContactCTA({ compact = false }: { compact?: boolean }) {
           <label>O que você quer construir?<textarea name="project" required rows={3} placeholder="Um site, sistema, automação ou uma ideia diferente…" /></label>
           <button className="button button-light form-submit" type="submit">Preparar solicitação <span>→</span></button>
           {message && <p className="form-status" role="status">{message}</p>}
-          {summary && <pre className="form-summary">{summary}</pre>}
         </form>
       </div>
     </section>
   );
 }
-

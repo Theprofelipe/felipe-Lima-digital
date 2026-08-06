@@ -1,4 +1,4 @@
-import { navigation, services, siteConfig } from "../data/site";
+import { contactLinks, navigation, services, siteConfig } from "../data/site";
 import Link from "next/link";
 import { Brand } from "./Navbar";
 
@@ -6,6 +6,7 @@ export function Footer() {
   const socialLinks = [
     { label: "GitHub", href: siteConfig.social.github },
     { label: "LinkedIn", href: siteConfig.social.linkedin },
+    { label: "Instagram", href: siteConfig.social.instagram },
   ].filter((item) => item.href);
 
   return (
@@ -26,10 +27,10 @@ export function Footer() {
         </div>
         <div className="footer-column">
           <h2>Contato</h2>
-          <Link href="/#contato">Solicitar orçamento</Link>
-          {siteConfig.contact.email && <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>}
-          {socialLinks.map((item) => <a key={item.label} href={item.href} target="_blank" rel="noreferrer">{item.label}</a>)}
-          {!siteConfig.contact.email && !socialLinks.length && <span className="footer-pending">Canais em configuração</span>}
+          <a href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer">Solicitar orçamento</a>
+          <a href={contactLinks.email}>{siteConfig.contact.email}</a>
+          <span className="footer-pending">{siteConfig.contact.locationLabel}</span>
+          {socialLinks.map((item) => <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>)}
         </div>
       </div>
       <div className="container footer-bottom">
