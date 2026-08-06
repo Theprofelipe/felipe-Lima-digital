@@ -1994,6 +1994,10 @@ img {
 .project-art-blue { background: linear-gradient(145deg, #aebbe8, #5e73b9 48%, #3c4978); }
 .project-art-sand { background: linear-gradient(145deg, #dbc8ae, #a4795d 50%, #72513f); }
 .project-art-violet { background: linear-gradient(145deg, #cabbe9, #7d67bd 50%, #4c3b78); }
+.project-art-indigo { background: linear-gradient(145deg, #c7c5ff, #7771cf 48%, #37345f); }
+.project-art-sky { background: linear-gradient(145deg, #b9e2f5, #69acd2 48%, #356b8d); }
+.project-art-navy { background: linear-gradient(145deg, #aebbe8, #526aab 48%, #273553); }
+.project-art-coffee { background: linear-gradient(145deg, #dfc9af, #a7795c 50%, #604637); }
 
 .concept-label {
   position: absolute;
@@ -2042,6 +2046,50 @@ img {
 .project-browser-top span { display: flex; gap: 3px; }
 .project-browser-top i { width: 5px; height: 5px; border-radius: 50%; background: #c7c8cc; }
 .project-browser-top em { margin-inline: auto; font-style: normal; }
+
+.felipe-project-ui,
+.batata-project-ui {
+  min-height: 315px;
+  display: grid;
+  grid-template-rows: 42px 1fr 42px;
+}
+
+.felipe-project-ui { color: #f7f7fb; background: #171724; }
+.felipe-project-ui header,
+.batata-project-ui header,
+.felipe-project-ui footer,
+.batata-project-ui footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 20px;
+  font-size: 6px;
+}
+.felipe-project-ui header { border-bottom: 1px solid rgba(255,255,255,.08); }
+.felipe-project-ui header b { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 7px; color: #292640; background: #fff; font-size: 8px; }
+.felipe-project-ui header span { color: #9b9aa9; }
+.felipe-project-ui main { padding: 27px 24px 18px; background: radial-gradient(circle at 76% 18%, rgba(126,116,225,.26), transparent 35%); }
+.felipe-project-ui main small { color: #9d97ec; font-size: 5px; letter-spacing: .16em; }
+.felipe-project-ui main h3 { margin: 11px 0 25px; font-size: 28px; font-weight: 540; line-height: .94; letter-spacing: -.05em; }
+.felipe-project-ui main div { display: grid; grid-template-columns: repeat(3,1fr); gap: 7px; }
+.felipe-project-ui main i { min-height: 47px; display: flex; align-items: end; padding: 8px; border: 1px solid rgba(255,255,255,.09); border-radius: 7px; color: #b9b7c6; background: rgba(255,255,255,.04); font-size: 6px; font-style: normal; }
+.felipe-project-ui footer { color: #cbc9da; background: #20202f; }
+.felipe-project-ui footer b { color: #9992f1; font-size: 11px; }
+
+.batata-project-ui { color: #15344c; background: #eff8fc; }
+.batata-project-ui header { background: rgba(255,255,255,.78); }
+.batata-project-ui header b { color: #226c9a; font-size: 8px; }
+.batata-project-ui header span { color: #7190a5; }
+.batata-project-ui main { position: relative; overflow: hidden; padding: 25px 22px 15px; }
+.batata-project-ui main::after { content: ""; position: absolute; top: -42px; right: -35px; width: 120px; height: 120px; border-radius: 50%; background: #f6cf64; opacity: .72; }
+.batata-project-ui main small { color: #4f91ba; font-size: 5px; letter-spacing: .15em; }
+.batata-project-ui main h3 { position: relative; z-index: 1; margin: 10px 0 17px; font-size: 24px; line-height: .95; letter-spacing: -.045em; }
+.batata-products { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+.batata-products i { height: 66px; display: block; clip-path: polygon(50% 0,100% 50%,50% 100%,0 50%); background: linear-gradient(135deg,#f36e70 0 50%,#f2c151 50%); filter: drop-shadow(0 7px 5px rgba(42,93,123,.14)); }
+.batata-products i:nth-child(2) { background: linear-gradient(135deg,#6e74d9 0 50%,#8bd5cf 50%); }
+.batata-products i:nth-child(3) { background: linear-gradient(135deg,#ef8b55 0 50%,#48a7d2 50%); }
+.batata-project-ui footer { color: #567d96; background: #fff; }
+.batata-project-ui footer b { color: #268855; font-size: 6px; }
 
 .atlas-ui {
   min-height: 315px;
@@ -2126,6 +2174,34 @@ img {
 }
 
 .project-info .tag-row { margin-bottom: 30px; }
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-link {
+  min-height: 43px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 17px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  transition: color 200ms ease, background 200ms ease, transform 200ms ease;
+}
+
+.project-link:hover { transform: translateY(-2px); }
+.project-link-primary { color: #fff; background: var(--ink); }
+.project-link-primary:hover { background: #343641; }
+.project-link-secondary { color: var(--ink); background: transparent; }
+.project-link-secondary:hover { color: #fff; background: var(--ink); }
+.project-link:focus-visible { outline: 3px solid rgba(99,91,201,.28); outline-offset: 3px; }
 
 .carousel-dots {
   display: none;
@@ -3018,7 +3094,7 @@ img {
 
   .sites-panel { padding:48px 24px;border-radius:24px; }.sites-panel-copy h2 { font-size:50px; }.site-device-visual { height:380px;width:125%;margin:5px 0 -40px;transform:scale(.78);transform-origin:top left; }.sites-panel .site-device-visual { margin-bottom:-115px; }
 
-  .projects-carousel { margin-top:48px; }.project-art { min-height:350px;border-radius:18px; }.project-browser { width:90%;border-width:5px; }.atlas-ui,.nativa-ui,.elo-ui { min-height:235px; }.atlas-ui main { padding:17px; }.atlas-chart { height:85px;padding:10px; }.nativa-ui>div { margin-top:48px; }.nativa-ui>div>i { width:170px;height:170px;bottom:-75px; }.elo-ui main { padding:16px; }.project-info h3 { font-size:44px; }.carousel-dots { display:flex;gap:5px;margin-top:25px; }.carousel-dots i { width:22px;height:2px;background:#dadbe0;transition:background .2s,width .2s; }.carousel-dots i.active { width:42px;background:var(--accent); }
+  .projects-carousel { margin-top:48px; }.project-art { min-height:350px;border-radius:18px; }.project-browser { width:90%;border-width:5px; }.felipe-project-ui,.batata-project-ui,.atlas-ui,.nativa-ui,.elo-ui { min-height:235px; }.felipe-project-ui,.batata-project-ui { grid-template-rows:36px 1fr 36px; }.felipe-project-ui main { padding:18px; }.felipe-project-ui main h3 { margin:8px 0 15px;font-size:23px; }.felipe-project-ui main i { min-height:34px; }.batata-project-ui main { padding:17px; }.batata-project-ui main h3 { margin:7px 0 11px;font-size:20px; }.batata-products i { height:48px; }.atlas-ui main { padding:17px; }.atlas-chart { height:85px;padding:10px; }.nativa-ui>div { margin-top:48px; }.nativa-ui>div>i { width:170px;height:170px;bottom:-75px; }.elo-ui main { padding:16px; }.project-info h3 { font-size:44px; }.carousel-dots { display:flex;gap:5px;margin-top:25px; }.carousel-dots i { width:22px;height:2px;background:#dadbe0;transition:background .2s,width .2s; }.carousel-dots i.active { width:42px;background:var(--accent); }
 
   .process-grid { grid-template-columns:1fr; }.process-step { min-height:230px; }.process-step h3 { margin-top:65px; }
   .differentials-grid { grid-template-columns:1fr; }.differential-card { min-height:220px; }
@@ -3050,7 +3126,7 @@ img {
   .founder-signature { margin-top:27px; }
   .capability-orbit { transform:scale(.7);width:125%;margin-left:-12%; }
   .site-device-visual { transform:scale(.67);width:149%;height:350px; }.sites-panel .site-device-visual { margin-bottom:-125px; }
-  .project-art { min-height:310px; }.project-info h3 { font-size:40px; }
+  .project-art { min-height:310px; }.project-info h3 { font-size:40px; }.project-link { flex:1;gap:12px;padding-inline:14px; }
   .contact-copy h2 { font-size:49px; }
   .sites-inner-hero .site-device-visual { width:149%;transform:scale(.67);height:350px;margin-bottom:-60px; }
   .performance-visual { transform:scale(.72);width:125%;margin-left:-12%; }

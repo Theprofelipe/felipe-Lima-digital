@@ -174,8 +174,8 @@ export function Projects() {
       <div className="container">
         <Reveal>
           <div className="section-topline projects-heading">
-            <SectionHeading eyebrow="Projetos" title={<>Soluções pensadas<br />para gerar resultado.</>} />
-            <p className="section-note">Os estudos abaixo são projetos conceito criados para demonstrar possibilidades visuais e técnicas. Nenhum cliente fictício é apresentado como real.</p>
+            <SectionHeading eyebrow="Projetos" title={<>Projetos que transformam<br />ideias em produto.</>} />
+            <p className="section-note">Uma seleção de soluções, experiências digitais e projetos conceituais desenvolvidos para explorar desafios reais de negócios.</p>
           </div>
         </Reveal>
         <Reveal delay={100}><ProjectsCarousel /></Reveal>

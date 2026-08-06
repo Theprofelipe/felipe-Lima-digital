@@ -36,21 +36,32 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
           <button type="button" aria-label="Próximo projeto" onClick={() => move(1)} disabled={active === projects.length - 1}>→</button>
         </div>
       </div>
-      <div className="projects-track" ref={trackRef} onScroll={onScroll} aria-label="Projetos conceito">
-        {projects.map((project, index) => (
+      <div className="projects-track" ref={trackRef} onScroll={onScroll} aria-label="Projetos selecionados">
+        {projects.map((project) => (
           <article className="project-slide" key={project.slug} aria-label={`${project.name}, ${project.category}`}>
             <div className={`project-art project-art-${project.tone}`}>
-              <span className="concept-label">Projeto conceito</span>
+              <span className="concept-label">{project.status}</span>
               <div className="project-browser">
-                <div className="project-browser-top"><span><i /><i /><i /></span><em>{project.slug}.conceito</em></div>
-                {index === 0 && (
-                  <div className="atlas-ui"><aside><b>A</b><i /><i /><i /><i /></aside><main><span>Bom dia.</span><h3>Operação em foco</h3><div className="atlas-metrics"><i /><i /><i /></div><div className="atlas-chart"><span /><span /><span /><span /><span /><span /></div></main></div>
+                <div className="project-browser-top"><span><i /><i /><i /></span><em>{project.slug}</em></div>
+                {project.visual === "felipe" && (
+                  <div className="felipe-project-ui">
+                    <header><b>FL</b><span>Serviços &nbsp; Projetos &nbsp; Contato</span></header>
+                    <main><small>DESENVOLVIMENTO WEB &amp; IA</small><h3>Tecnologia para<br />empresas.</h3><div><i>Sites</i><i>Sistemas</i><i>Automação</i></div></main>
+                    <footer><span>Orçamento inteligente</span><b>→</b></footer>
+                  </div>
                 )}
-                {index === 1 && (
-                  <div className="nativa-ui"><nav><b>nativa°</b><span>projetos &nbsp; estúdio</span></nav><div><small>CASA VENTO • 2026</small><h3>Espaços para<br />viver devagar.</h3><i /></div></div>
+                {project.visual === "batata" && (
+                  <div className="batata-project-ui">
+                    <header><b>BATATA PIPAS</b><span>Catálogo &nbsp; Como comprar</span></header>
+                    <main><small>ESCOLHA SUA PIPA</small><h3>Cor no céu.<br />Diversão no ar.</h3><div className="batata-products"><i /><i /><i /></div></main>
+                    <footer><span>Catálogo responsivo</span><b>WhatsApp</b></footer>
+                  </div>
                 )}
-                {index === 2 && (
-                  <div className="elo-ui"><header><b>elo.</b><span>Atendimento ativo</span></header><main><div className="elo-flow"><i>Mensagem</i><span /><i>IA</i><span /><i>CRM</i></div><div className="elo-chat"><p>Como podemos ajudar?</p><p>Quero conhecer o serviço.</p><p>Perfeito. Vou organizar as informações.</p></div></main></div>
+                {project.visual === "dashboard" && (
+                  <div className="atlas-ui"><aside><b>₿</b><i /><i /><i /><i /></aside><main><span>Visão geral do mercado</span><h3>Dados em foco</h3><div className="atlas-metrics"><i /><i /><i /></div><div className="atlas-chart"><span /><span /><span /><span /><span /><span /></div></main></div>
+                )}
+                {project.visual === "cafeteria" && (
+                  <div className="nativa-ui"><nav><b>cafeteria.</b><span>menu &nbsp; história &nbsp; contato</span></nav><div><small>CAFÉS · ENCONTROS</small><h3>Sabor que convida<br />a desacelerar.</h3><i /></div></div>
                 )}
               </div>
             </div>
@@ -58,8 +69,11 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
               <span>{project.category}</span>
               <h3>{project.name}</h3>
               <p>{project.description}</p>
-              <div className="tag-row">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-              <span className="text-link text-link-muted" aria-label={`${project.name} ainda é um projeto conceito`}>Estudo demonstrativo <span>↗</span></span>
+              <div className="tag-row" aria-label={`Tecnologias utilizadas em ${project.name}`}>{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
+              <div className="project-links">
+                {project.liveUrl && <a className="project-link project-link-primary" href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ver projeto ${project.name} em nova aba`}>Ver projeto <span>↗</span></a>}
+                <a className={`project-link ${project.liveUrl ? "project-link-secondary" : "project-link-primary"}`} href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ver código do projeto ${project.name} no GitHub em nova aba`}>Ver código <span>↗</span></a>
+              </div>
             </div>
           </article>
         ))}
