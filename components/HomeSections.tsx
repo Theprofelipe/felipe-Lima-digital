@@ -46,7 +46,7 @@ export function Hero() {
           <p className="hero-lead">Desenvolvemos soluções digitais sob medida para o seu negócio.</p>
           <p className="hero-support">Sites, sistemas, automações e soluções com Inteligência Artificial para transformar ideias em produtos digitais modernos, rápidos e escaláveis.</p>
           <div className="hero-actions">
-            <a href={contactLinks.whatsapp} className="button button-primary" target="_blank" rel="noopener noreferrer">Solicitar orçamento <span>↗</span></a>
+            <a href={contactLinks.whatsapp} className="button button-primary" target="_blank" rel="noopener noreferrer" data-budget-wizard aria-haspopup="dialog">Solicitar orçamento <span>↗</span></a>
             <a href="#projetos" className="button button-secondary">Ver projetos <span>↓</span></a>
           </div>
           <div className="founder-signature">

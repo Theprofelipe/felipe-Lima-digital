@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
+import { BudgetWizard } from "../components/BudgetWizard";
 import { siteConfig } from "../data/site";
 import "./globals.css";
 
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body>
         <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
         <div id="conteudo-principal" tabIndex={-1}>{children}</div>
+        <BudgetWizard />
       </body>
     </html>
   );

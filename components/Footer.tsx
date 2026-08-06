@@ -27,7 +27,7 @@ export function Footer() {
         </div>
         <div className="footer-column">
           <h2>Contato</h2>
-          <a href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer">Solicitar orçamento</a>
+          <a href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer" data-budget-wizard aria-haspopup="dialog">Solicitar orçamento</a>
           <a href={contactLinks.email}>{siteConfig.contact.email}</a>
           <span className="footer-pending">{siteConfig.contact.locationLabel}</span>
           {socialLinks.map((item) => <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer">{item.label}</a>)}

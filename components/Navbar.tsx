@@ -47,7 +47,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <a className="button button-small nav-cta" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer">
+        <a className="button button-small nav-cta" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer" data-budget-wizard aria-haspopup="dialog">
           Solicitar orçamento
         </a>
 
@@ -77,7 +77,7 @@ export function Navbar() {
               {item.label}
             </Link>
           ))}
-          <a className="button" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)}>
+          <a className="button" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer" data-budget-wizard aria-haspopup="dialog" onClick={() => setOpen(false)}>
             Solicitar orçamento
           </a>
         </div>
