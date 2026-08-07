@@ -1,7 +1,8 @@
 "use client";
 
+/* eslint-disable @next/next/no-html-link-for-pages -- Links nativos evitam uma falha de prefetch do adaptador Vinext atual. */
+
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { contactLinks, navigation } from "../data/site";
 
 export function Brand() {
@@ -37,13 +38,13 @@ export function Navbar() {
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <div className="nav-shell">
-        <Link href="/#inicio" className="brand-link" onClick={() => setOpen(false)}>
+        <a href="/#inicio" className="brand-link" onClick={() => setOpen(false)}>
           <Brand />
-        </Link>
+        </a>
 
         <nav className="desktop-nav" aria-label="Navegação principal">
           {navigation.map((item) => (
-            <Link key={item.label} href={item.href}>{item.label}</Link>
+            <a key={item.label} href={item.href}>{item.label}</a>
           ))}
         </nav>
 
@@ -72,10 +73,10 @@ export function Navbar() {
       >
         <div className="mobile-nav-inner">
           {navigation.map((item, index) => (
-            <Link key={item.label} href={item.href} onClick={() => setOpen(false)}>
+            <a key={item.label} href={item.href} onClick={() => setOpen(false)}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               {item.label}
-            </Link>
+            </a>
           ))}
           <a className="button" href={contactLinks.whatsapp} target="_blank" rel="noopener noreferrer" data-budget-wizard aria-haspopup="dialog" onClick={() => setOpen(false)}>
             Solicitar orçamento

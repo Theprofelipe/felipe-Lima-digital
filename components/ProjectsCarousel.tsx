@@ -43,6 +43,19 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
               <span className="concept-label">{project.status}</span>
               <div className="project-browser">
                 <div className="project-browser-top"><span><i /><i /><i /></span><em>{project.slug}</em></div>
+                {project.visual === "flowlead" && (
+                  <div className="flowlead-project-ui">
+                    <header><b>FlowLead</b><span><i /> Fluxo local</span></header>
+                    <main>
+                      <div className="flowlead-mini-flow"><span>Lead</span><i>→</i><span>Qualificação</span><i>→</i><span>Acompanhamento</span></div>
+                      <div className="flowlead-mini-grid">
+                        <section><small>NOVO CONTATO</small><strong>Marina Alves</strong><em>Aurora Studio</em></section>
+                        <section><small>PRIORIDADE</small><strong><i /> Alta</strong><em>Diagnóstico sugerido</em></section>
+                      </div>
+                    </main>
+                    <footer><span>Dados processados no navegador</span><b>Simulação</b></footer>
+                  </div>
+                )}
                 {project.visual === "felipe" && (
                   <div className="felipe-project-ui">
                     <header><b>FL</b><span>Serviços &nbsp; Projetos &nbsp; Contato</span></header>
@@ -71,8 +84,9 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
               <p>{project.description}</p>
               <div className="tag-row" aria-label={`Tecnologias utilizadas em ${project.name}`}>{project.technologies.map((technology) => <span key={technology}>{technology}</span>)}</div>
               <div className="project-links">
+                {project.detailUrl && <a className="project-link project-link-primary" href={project.detailUrl} aria-label={`Explorar o projeto ${project.name}`}>Explorar projeto <span>→</span></a>}
                 {project.liveUrl && <a className="project-link project-link-primary" href={project.liveUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ver projeto ${project.name} em nova aba`}>Ver projeto <span>↗</span></a>}
-                <a className={`project-link ${project.liveUrl ? "project-link-secondary" : "project-link-primary"}`} href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ver código do projeto ${project.name} no GitHub em nova aba`}>Ver código <span>↗</span></a>
+                {project.githubUrl && <a className={`project-link ${project.liveUrl || project.detailUrl ? "project-link-secondary" : "project-link-primary"}`} href={project.githubUrl} target="_blank" rel="noopener noreferrer" aria-label={`Ver código do projeto ${project.name} no GitHub em nova aba`}>Ver código <span>↗</span></a>}
               </div>
             </div>
           </article>

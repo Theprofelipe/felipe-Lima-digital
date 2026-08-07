@@ -39,16 +39,22 @@ test("server-renders the complete home page", async () => {
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
-test("server-renders the sites and blog routes", async () => {
-  const [sitesResponse, blogResponse] = await Promise.all([
+test("server-renders the sites, blog and FlowLead routes", async () => {
+  const [sitesResponse, blogResponse, flowLeadResponse] = await Promise.all([
     request("/sites"),
     request("/blog"),
+    request("/projetos/flowlead"),
   ]);
 
   assert.equal(sitesResponse.status, 200);
   assert.match(await sitesResponse.text(), /Seu site precisa fazer mais/);
   assert.equal(blogResponse.status, 200);
   assert.match(await blogResponse.text(), /Tecnologia para quem/);
+  assert.equal(flowLeadResponse.status, 200);
+  const flowLeadHtml = await flowLeadResponse.text();
+  assert.match(flowLeadHtml, /FlowLead/);
+  assert.match(flowLeadHtml, /Projeto autoral demonstrativo/);
+  assert.match(flowLeadHtml, /Nenhum dado é enviado ou armazenado/);
 });
 
 test("publishes host-aware robots and sitemap routes", async () => {
@@ -64,6 +70,7 @@ test("publishes host-aware robots and sitemap routes", async () => {
   const sitemap = await sitemapResponse.text();
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/sites<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/blog<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/projetos\/flowlead<\/loc>/);
 });
 
 test("keeps editable content centralized and optional assets resilient", async () => {
@@ -74,11 +81,12 @@ test("keeps editable content centralized and optional assets resilient", async (
 
   assert.match(data, /export const services/);
   assert.match(data, /export const projects/);
-  assert.match(data, /email: ""/);
-  assert.match(data, /whatsapp: ""/);
+  assert.match(data, /email: "[^"]+"/);
+  assert.match(data, /whatsapp: "\d+"/);
+  assert.match(data, /slug: "flowlead"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await assert.rejects(access(new URL("app/_sites-preview", projectRoot)));
   await access(new URL("public/og.png", projectRoot));
+  await access(new URL("public/images/felipe-lima-machado-perfil.png", projectRoot));
 });
-

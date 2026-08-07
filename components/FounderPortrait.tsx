@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function FounderPortrait() {
+  const imageRef = useRef<HTMLImageElement>(null);
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (image?.complete && image.naturalWidth > 0) setLoaded(true);
+  }, []);
 
   return (
     <div className={`founder-portrait ${loaded ? "has-image" : ""}`}>
@@ -13,11 +19,12 @@ export function FounderPortrait() {
         <i />
       </div>
       {!failed && (
-        // A tag nativa permite manter o placeholder quando o arquivo opcional ainda não existe.
+        // A tag nativa mantém o placeholder disponível caso o arquivo não carregue.
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src="/images/felipe-lima-machado.webp"
-          alt="Felipe Lima Machado, fundador"
+          ref={imageRef}
+          src="/images/felipe-lima-machado-perfil.png"
+          alt="Felipe Lima Machado"
           onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
         />
