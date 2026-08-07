@@ -72,10 +72,10 @@ Preencha os endereços em `siteConfig.social`. Links vazios não são exibidos.
 Adicione a fotografia otimizada neste caminho:
 
 ```text
-public/images/felipe-lima-machado.webp
+public/images/felipe-lima-machado-perfil.png
 ```
 
-Dimensão recomendada: proporção vertical próxima de 4:5, com pelo menos 1000 px no lado maior. Sem o arquivo, um placeholder institucional permanece visível.
+A fotografia oficial é usada somente no bloco do fundador. Sem o arquivo, um placeholder institucional permanece visível.
 
 ### Adicionar projetos reais
 
