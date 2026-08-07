@@ -21,7 +21,34 @@ const flowSteps = [
   { number: "06", title: "Acompanhamento", text: "A próxima ação fica clara em uma prévia de painel." },
 ] as const;
 
-const possibleConnections = ["Formulários", "APIs", "Webhooks", "WhatsApp", "CRM", "Automações", "Inteligência artificial"] as const;
+const possibleConnections = ["Formulários", "APIs", "Webhooks", "WhatsApp", "CRM", "Notificações", "Automações", "Inteligência artificial"] as const;
+
+const demoCapabilities = [
+  "Organiza os dados localmente",
+  "Classifica o lead com regras demonstrativas",
+  "Gera resumo e prévia de mensagem",
+  "Simula o acompanhamento comercial",
+] as const;
+
+const inactiveCapabilities = [
+  "Envio real de mensagens",
+  "Armazenamento permanente",
+  "Integrações externas",
+  "Análise por IA real",
+  "Painel administrativo de produção",
+] as const;
+
+const demonstratedResources = [
+  "Formulário estruturado",
+  "Validação local",
+  "Priorização transparente",
+  "Resumo copiável",
+  "Prévia de mensagem",
+  "Pipeline interativo",
+  "Histórico de atividades",
+] as const;
+
+const projectTechnologies = ["Next.js", "React", "TypeScript", "CSS", "Vinext", "Estado local no navegador"] as const;
 
 function FlowLeadHeroVisual() {
   return (
@@ -87,6 +114,31 @@ export default function FlowLeadPage() {
           </div>
         </section>
 
+        <section className="section flowlead-case-section">
+          <div className="container flowlead-case-grid">
+            <Reveal>
+              <div className="flowlead-case-heading">
+                <span className="eyebrow"><i /> Solução proposta</span>
+                <h2>Um case autoral sobre transformar interesse em rotina comercial.</h2>
+                <p>O FlowLead conecta coleta, leitura de contexto e acompanhamento em uma única experiência demonstrativa. A proposta não é substituir a equipe, mas entregar informações melhores para a próxima conversa.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={90}>
+              <div className="flowlead-case-details">
+                <div>
+                  <span>Recursos demonstrados</span>
+                  <ul>{demonstratedResources.map((item) => <li key={item}><i aria-hidden="true" />{item}</li>)}</ul>
+                </div>
+                <div>
+                  <span>Tecnologias utilizadas</span>
+                  <p>Implementação frontend responsiva, sem backend, autenticação ou persistência.</p>
+                  <div>{projectTechnologies.map((item) => <small key={item}>{item}</small>)}</div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         <section className="section flowlead-steps-section">
           <div className="container">
             <Reveal>
@@ -116,23 +168,37 @@ export default function FlowLeadPage() {
         </section>
 
         <section className="section flowlead-technical-section">
-          <div className="container flowlead-technical-grid">
+          <div className="container">
             <Reveal>
-              <div className="flowlead-technical-copy">
-                <span className="eyebrow eyebrow-light"><i /> Possibilidades técnicas</span>
-                <h2>Uma base que pode conectar a operação real.</h2>
-                <p>Em uma implementação de produção, a experiência poderia ser integrada aos canais e ferramentas já usados pela empresa, com regras, segurança e governança adequadas.</p>
-                <div className="flowlead-connection-chips">{possibleConnections.map((item) => <span key={item}>{item}</span>)}</div>
+              <div className="flowlead-technical-heading">
+                <span className="eyebrow eyebrow-light"><i /> Escopo transparente</span>
+                <h2>Demonstração convincente, limites claros.</h2>
+                <p>O protótipo mostra a experiência comercial sem fingir uma infraestrutura que não existe. Em produção, cada integração dependeria de regras, segurança e governança adequadas.</p>
               </div>
             </Reveal>
-            <Reveal delay={100}>
-              <aside className="flowlead-technical-note">
-                <span>Escopo desta versão</span>
-                <h3>Frontend demonstrativo.</h3>
-                <p>Nenhuma integração está ativa nesta etapa. O formulário, a classificação e o painel funcionam somente durante a sessão atual da página.</p>
-                <ul><li><i /> Sem backend ou banco de dados</li><li><i /> Sem envio para WhatsApp ou CRM</li><li><i /> Sem inteligência artificial externa ativa</li></ul>
-              </aside>
-            </Reveal>
+            <div className="flowlead-boundaries-grid">
+              <Reveal>
+                <article className="flowlead-boundary-card is-active">
+                  <span>01 · O que esta demonstração faz</span>
+                  <h3>Organiza e orienta.</h3>
+                  <ul>{demoCapabilities.map((item) => <li key={item}><i aria-hidden="true">✓</i>{item}</li>)}</ul>
+                </article>
+              </Reveal>
+              <Reveal delay={70}>
+                <article className="flowlead-boundary-card">
+                  <span>02 · O que uma versão real poderia integrar</span>
+                  <h3>Conecta a operação.</h3>
+                  <div className="flowlead-connection-chips">{possibleConnections.map((item) => <small key={item}>{item}</small>)}</div>
+                </article>
+              </Reveal>
+              <Reveal delay={140}>
+                <article className="flowlead-boundary-card is-inactive">
+                  <span>03 · O que não está ativo aqui</span>
+                  <h3>Sem promessas artificiais.</h3>
+                  <ul>{inactiveCapabilities.map((item) => <li key={item}><i aria-hidden="true">—</i>{item}</li>)}</ul>
+                </article>
+              </Reveal>
+            </div>
           </div>
         </section>
 
@@ -141,9 +207,9 @@ export default function FlowLeadPage() {
           <div className="container">
             <Reveal>
               <span className="eyebrow eyebrow-light"><i /> FlowLead</span>
-              <h2>Um fluxo claro começa com o contexto certo.</h2>
-              <p>Esta primeira versão transforma um briefing em uma visão organizada — inteiramente no frontend.</p>
-              <div className="hero-actions"><a className="button button-light" href="#demonstracao">Testar novamente <span>↑</span></a><a className="button flowlead-button-ghost" href="/#projetos">Ver outros projetos <span>→</span></a></div>
+              <h2>Quer organizar o seu fluxo comercial?</h2>
+              <p>Podemos desenhar uma solução semelhante para o seu processo, com o nível certo de automação, integração e acompanhamento.</p>
+              <div className="hero-actions"><a className="button button-light" href="/#contato">Solicitar solução semelhante <span>→</span></a><a className="button flowlead-button-ghost" href="#demonstracao">Testar novamente <span>↑</span></a></div>
             </Reveal>
           </div>
         </section>

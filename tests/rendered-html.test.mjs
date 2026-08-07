@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readdir, readFile } from "node:fs/promises";
 import test from "node:test";
 
 const projectRoot = new URL("../", import.meta.url);
@@ -36,6 +36,11 @@ test("server-renders the complete home page", async () => {
   assert.match(html, /Soluções digitais/);
   assert.match(html, /Felipe Lima Machado/);
   assert.match(html, /Projeto conceito/);
+  assert.match(html, /flowlead-feature-card/);
+  assert.match(html, /Explorar demonstração/);
+  assert.match(html, /Classificação transparente/);
+  assert.match(html, /Do novo contato à próxima ação/);
+  assert.equal((html.match(/href="\/projetos\/flowlead"/g) ?? []).length, 1);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
@@ -55,6 +60,10 @@ test("server-renders the sites, blog and FlowLead routes", async () => {
   assert.match(flowLeadHtml, /FlowLead/);
   assert.match(flowLeadHtml, /Projeto autoral demonstrativo/);
   assert.match(flowLeadHtml, /Nenhum dado é enviado ou armazenado/);
+  assert.match(flowLeadHtml, /O que esta demonstração faz/);
+  assert.match(flowLeadHtml, /O que uma versão real poderia integrar/);
+  assert.match(flowLeadHtml, /O que não está ativo aqui/);
+  assert.match(flowLeadHtml, /Solicitar solução semelhante/);
 });
 
 test("publishes host-aware robots and sitemap routes", async () => {
@@ -84,9 +93,37 @@ test("keeps editable content centralized and optional assets resilient", async (
   assert.match(data, /email: "[^"]+"/);
   assert.match(data, /whatsapp: "\d+"/);
   assert.match(data, /slug: "flowlead"/);
+  assert.match(data, /detailUrl: "\/projetos\/flowlead"/);
+  assert.match(data, /Classificação transparente/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await assert.rejects(access(new URL("app/_sites-preview", projectRoot)));
   await access(new URL("public/og.png", projectRoot));
   await access(new URL("public/images/felipe-lima-machado-perfil.png", projectRoot));
+});
+
+async function sourceFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = [];
+
+  for (const entry of entries) {
+    const target = new URL(entry.name + (entry.isDirectory() ? "/" : ""), directory);
+    if (entry.isDirectory()) files.push(...await sourceFiles(target));
+    else if (/\.(?:ts|tsx)$/.test(entry.name)) files.push(target);
+  }
+
+  return files;
+}
+
+test("keeps the founder portrait in its single intended section", async () => {
+  const files = [
+    ...await sourceFiles(new URL("../app/", import.meta.url)),
+    ...await sourceFiles(new URL("../components/", import.meta.url)),
+  ];
+  const sources = await Promise.all(files.map((file) => readFile(file, "utf8")));
+  const portraitReferences = sources.reduce((total, source) => total + (source.match(/felipe-lima-machado-perfil\.png/g) ?? []).length, 0);
+  const homePage = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+
+  assert.equal(portraitReferences, 1);
+  assert.equal((homePage.match(/<Founder\s*\/>/g) ?? []).length, 1);
 });

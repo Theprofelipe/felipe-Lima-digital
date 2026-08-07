@@ -6,9 +6,11 @@ import { projects } from "../data/site";
 export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
+  const featuredProject = projects.find((project) => project.slug === "flowlead");
+  const visibleProjects = compact ? projects : projects.filter((project) => project.slug !== "flowlead");
 
   const move = (direction: -1 | 1) => {
-    const next = Math.min(Math.max(active + direction, 0), projects.length - 1);
+    const next = Math.min(Math.max(active + direction, 0), visibleProjects.length - 1);
     const track = trackRef.current;
     if (!track) return;
     const slide = track.children[next] as HTMLElement | undefined;
@@ -29,15 +31,58 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
 
   return (
     <div className={`projects-carousel ${compact ? "is-compact" : ""}`}>
+      {!compact && featuredProject?.detailUrl && (
+        <a className="flowlead-feature-card" href={featuredProject.detailUrl} aria-label="FlowLead: explorar demonstração interativa">
+          <div className="flowlead-feature-copy">
+            <div className="flowlead-feature-meta">
+              <span>{featuredProject.status}</span>
+              <i aria-hidden="true" />
+              <span>{featuredProject.category}</span>
+            </div>
+            <strong className="flowlead-feature-name">{featuredProject.name}</strong>
+            <h3>Do novo contato à próxima ação, sem perder contexto.</h3>
+            <p>Quando pedidos chegam sem padrão, informações e prioridades se perdem. O FlowLead organiza o briefing, explica a classificação e prepara o acompanhamento comercial.</p>
+            <div className="flowlead-feature-live"><i aria-hidden="true" /><span>Demonstração interativa completa</span></div>
+            <ul aria-label="Recursos demonstrados no FlowLead">
+              <li><i aria-hidden="true">✓</i>Classificação transparente</li>
+              <li><i aria-hidden="true">✓</i>Resumo comercial</li>
+              <li><i aria-hidden="true">✓</i>Acompanhamento do lead</li>
+            </ul>
+            <span className="flowlead-feature-cta">Explorar demonstração <i aria-hidden="true">→</i></span>
+          </div>
+
+          <div className="flowlead-feature-preview" aria-hidden="true">
+            <div className="flowlead-feature-window">
+              <header><b>FL</b><span>FlowLead · visão comercial</span><em><i /> Local</em></header>
+              <main>
+                <div className="flowlead-feature-preview-heading"><span>Lead recebido</span><strong>Marina Alves</strong><small>Aurora Studio · Automação de processo</small></div>
+                <div className="flowlead-feature-priority"><small>Prioridade</small><strong><i /> Alta</strong><span>Prazo curto + automação</span></div>
+                <section className="flowlead-feature-summary">
+                  <div><small>Resumo comercial</small><span>Pronto para copiar</span></div>
+                  <p>Organizar pedidos e preparar o próximo contato da equipe.</p>
+                  <i><span /></i>
+                </section>
+                <section className="flowlead-feature-progress">
+                  <div><small>Acompanhamento</small><span>2 de 4 etapas</span></div>
+                  <ol><li className="is-complete"><i>✓</i><span>Novo</span></li><li className="is-current"><i>2</i><span>Qualificado</span></li><li><i>3</i><span>Contato</span></li><li><i>4</i><span>Proposta</span></li></ol>
+                </section>
+              </main>
+              <footer><span>Nenhum dado enviado</span><b>Simulação local</b></footer>
+            </div>
+          </div>
+        </a>
+      )}
+
+      {!compact && <div className="projects-secondary-label"><span>Outros projetos</span><i /></div>}
       <div className="carousel-toolbar">
-        <p aria-live="polite">{String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}</p>
+        <p aria-live="polite">{String(active + 1).padStart(2, "0")} / {String(visibleProjects.length).padStart(2, "0")}</p>
         <div>
           <button type="button" aria-label="Projeto anterior" onClick={() => move(-1)} disabled={active === 0}>←</button>
-          <button type="button" aria-label="Próximo projeto" onClick={() => move(1)} disabled={active === projects.length - 1}>→</button>
+          <button type="button" aria-label="Próximo projeto" onClick={() => move(1)} disabled={active === visibleProjects.length - 1}>→</button>
         </div>
       </div>
       <div className="projects-track" ref={trackRef} onScroll={onScroll} aria-label="Projetos selecionados">
-        {projects.map((project) => (
+        {visibleProjects.map((project) => (
           <article className="project-slide" key={project.slug} aria-label={`${project.name}, ${project.category}`}>
             <div className={`project-art project-art-${project.tone}`}>
               <span className="concept-label">{project.status}</span>
@@ -93,7 +138,7 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
         ))}
       </div>
       <div className="carousel-dots" aria-hidden="true">
-        {projects.map((project, index) => <i key={project.slug} className={index === active ? "active" : ""} />)}
+        {visibleProjects.map((project, index) => <i key={project.slug} className={index === active ? "active" : ""} />)}
       </div>
     </div>
   );
