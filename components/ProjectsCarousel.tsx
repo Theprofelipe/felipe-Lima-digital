@@ -115,6 +115,16 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
                     <footer><span>Catálogo responsivo</span><b>WhatsApp</b></footer>
                   </div>
                 )}
+                {project.visual === "fieldops" && (
+                  <div className="fieldops-project-ui">
+                    <aside><b>FO</b><i className="active" /><i /><i /><i /></aside>
+                    <main>
+                      <div className="fieldops-project-heading"><span>Operação em campo</span><small>Hoje · 6 ordens</small></div>
+                      <div className="fieldops-project-metrics"><span><small>EM ABERTO</small><strong>05</strong></span><span><small>EM ROTA</small><strong>01</strong></span><span><small>EM RISCO</small><strong>03</strong></span></div>
+                      <div className="fieldops-project-orders"><span><i>FO-1042</i><b>Inspeção técnica</b><em>Urgente</em></span><span><i>FO-1043</i><b>Manutenção preventiva</b><em>Em rota</em></span></div>
+                    </main>
+                  </div>
+                )}
                 {project.visual === "dashboard" && (
                   <div className="atlas-ui"><aside><b>₿</b><i /><i /><i /><i /></aside><main><span>Visão geral do mercado</span><h3>Dados em foco</h3><div className="atlas-metrics"><i /><i /><i /></div><div className="atlas-chart"><span /><span /><span /><span /><span /><span /></div></main></div>
                 )}

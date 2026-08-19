@@ -2466,6 +2466,7 @@ img {
 .project-art-flowlead { background: linear-gradient(145deg, #d7d5ff, #8981dd 48%, #4c477f); }
 .project-art-sky { background: linear-gradient(145deg, #b9e2f5, #69acd2 48%, #356b8d); }
 .project-art-navy { background: linear-gradient(145deg, #aebbe8, #526aab 48%, #273553); }
+.project-art-teal { background: linear-gradient(145deg, #b8e2dc, #559f9c 48%, #245c60); }
 .project-art-coffee { background: linear-gradient(145deg, #dfc9af, #a7795c 50%, #604637); }
 
 .concept-label {
@@ -2700,6 +2701,145 @@ img {
 .batata-products i:nth-child(3) { background: linear-gradient(135deg,#ef8b55 0 50%,#48a7d2 50%); }
 .batata-project-ui footer { color: #567d96; background: #fff; }
 .batata-project-ui footer b { color: #268855; font-size: 6px; }
+
+.fieldops-project-ui {
+  min-height: 315px;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  color: #2c4144;
+  background: #edf4f2;
+}
+
+.fieldops-project-ui aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 21px;
+  padding-top: 16px;
+  background: #173a3d;
+}
+
+.fieldops-project-ui aside b {
+  width: 23px;
+  height: 23px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  color: #173a3d;
+  background: #effbf8;
+  font-size: 7px;
+}
+
+.fieldops-project-ui aside i {
+  width: 13px;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(220, 245, 240, .26);
+}
+
+.fieldops-project-ui aside i.active {
+  background: #79cfc0;
+  box-shadow: 0 0 0 5px rgba(121, 207, 192, .08);
+}
+
+.fieldops-project-ui main {
+  padding: 22px;
+}
+
+.fieldops-project-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.fieldops-project-heading span {
+  font-size: 14px;
+  font-weight: 680;
+  letter-spacing: -.04em;
+}
+
+.fieldops-project-heading small {
+  color: #829092;
+  font-size: 5px;
+}
+
+.fieldops-project-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-top: 15px;
+}
+
+.fieldops-project-metrics span {
+  min-height: 60px;
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  padding: 9px;
+  border: 1px solid rgba(25, 75, 76, .08);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, .86);
+  box-shadow: 0 5px 12px rgba(30, 74, 75, .04);
+}
+
+.fieldops-project-metrics small {
+  color: #8d9899;
+  font-size: 4px;
+  letter-spacing: .06em;
+}
+
+.fieldops-project-metrics strong {
+  color: #2e4a4c;
+  font-size: 14px;
+}
+
+.fieldops-project-metrics span:last-child strong {
+  color: #b05048;
+}
+
+.fieldops-project-orders {
+  display: grid;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.fieldops-project-orders span {
+  min-height: 53px;
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  align-items: center;
+  gap: 7px;
+  padding: 9px;
+  border: 1px solid rgba(25, 75, 76, .08);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, .88);
+}
+
+.fieldops-project-orders i {
+  color: #668083;
+  font-size: 5px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.fieldops-project-orders b {
+  color: #3b5053;
+  font-size: 6px;
+}
+
+.fieldops-project-orders em {
+  padding: 4px 6px;
+  border-radius: 999px;
+  color: #a44c44;
+  background: #fae8e5;
+  font-size: 4px;
+  font-style: normal;
+}
+
+.fieldops-project-orders span:last-child em {
+  color: #326f9d;
+  background: #e6f0f8;
+}
 
 .atlas-ui {
   min-height: 315px;
@@ -3713,7 +3853,7 @@ img {
 
   .sites-panel { padding:48px 24px;border-radius:24px; }.sites-panel-copy h2 { font-size:50px; }.site-device-visual { height:380px;width:125%;margin:5px 0 -40px;transform:scale(.78);transform-origin:top left; }.sites-panel .site-device-visual { margin-bottom:-115px; }
 
-  .projects-carousel { margin-top:48px; }.flowlead-feature-card { min-height:0;gap:38px;padding:34px 22px;border-radius:24px; }.flowlead-feature-copy h3 { font-size:clamp(40px,11.8vw,56px); }.flowlead-feature-copy>p { font-size:15px; }.flowlead-feature-copy li { font-size:13px; }.flowlead-feature-cta { width:100%;justify-content:space-between; }.flowlead-feature-window { min-height:390px;border-width:5px;transform:none; }.flowlead-feature-window>main { padding:14px; }.flowlead-feature-preview-heading,.flowlead-feature-priority { min-height:90px; }.flowlead-feature-summary,.flowlead-feature-progress { padding:13px; }.projects-secondary-label { margin-top:42px; }.project-art { min-height:350px;border-radius:18px; }.project-browser { width:90%;border-width:5px; }.flowlead-project-ui,.felipe-project-ui,.batata-project-ui,.atlas-ui,.nativa-ui,.elo-ui { min-height:235px; }.flowlead-project-ui,.felipe-project-ui,.batata-project-ui { grid-template-rows:36px 1fr 36px; }.flowlead-project-ui main { padding:17px 14px; }.flowlead-mini-flow span { min-width:55px;padding-inline:5px; }.flowlead-mini-flow i { padding-inline:4px; }.flowlead-mini-grid { margin-top:18px; }.flowlead-mini-grid section { min-height:70px;padding:10px; }.felipe-project-ui main { padding:18px; }.felipe-project-ui main h3 { margin:8px 0 15px;font-size:23px; }.felipe-project-ui main i { min-height:34px; }.batata-project-ui main { padding:17px; }.batata-project-ui main h3 { margin:7px 0 11px;font-size:20px; }.batata-products i { height:48px; }.atlas-ui main { padding:17px; }.atlas-chart { height:85px;padding:10px; }.nativa-ui>div { margin-top:48px; }.nativa-ui>div>i { width:170px;height:170px;bottom:-75px; }.elo-ui main { padding:16px; }.project-info h3 { font-size:44px; }.carousel-dots { display:flex;gap:5px;margin-top:25px; }.carousel-dots i { width:22px;height:2px;background:#dadbe0;transition:background .2s,width .2s; }.carousel-dots i.active { width:42px;background:var(--accent); }
+  .projects-carousel { margin-top:48px; }.flowlead-feature-card { min-height:0;gap:38px;padding:34px 22px;border-radius:24px; }.flowlead-feature-copy h3 { font-size:clamp(40px,11.8vw,56px); }.flowlead-feature-copy>p { font-size:15px; }.flowlead-feature-copy li { font-size:13px; }.flowlead-feature-cta { width:100%;justify-content:space-between; }.flowlead-feature-window { min-height:390px;border-width:5px;transform:none; }.flowlead-feature-window>main { padding:14px; }.flowlead-feature-preview-heading,.flowlead-feature-priority { min-height:90px; }.flowlead-feature-summary,.flowlead-feature-progress { padding:13px; }.projects-secondary-label { margin-top:42px; }.project-art { min-height:350px;border-radius:18px; }.project-browser { width:90%;border-width:5px; }.flowlead-project-ui,.felipe-project-ui,.batata-project-ui,.fieldops-project-ui,.atlas-ui,.nativa-ui,.elo-ui { min-height:235px; }.flowlead-project-ui,.felipe-project-ui,.batata-project-ui { grid-template-rows:36px 1fr 36px; }.flowlead-project-ui main { padding:17px 14px; }.flowlead-mini-flow span { min-width:55px;padding-inline:5px; }.flowlead-mini-flow i { padding-inline:4px; }.flowlead-mini-grid { margin-top:18px; }.flowlead-mini-grid section { min-height:70px;padding:10px; }.felipe-project-ui main { padding:18px; }.felipe-project-ui main h3 { margin:8px 0 15px;font-size:23px; }.felipe-project-ui main i { min-height:34px; }.batata-project-ui main { padding:17px; }.batata-project-ui main h3 { margin:7px 0 11px;font-size:20px; }.batata-products i { height:48px; }.fieldops-project-ui main { padding:14px; }.fieldops-project-metrics span { min-height:47px; }.fieldops-project-orders span { min-height:42px; }.atlas-ui main { padding:17px; }.atlas-chart { height:85px;padding:10px; }.nativa-ui>div { margin-top:48px; }.nativa-ui>div>i { width:170px;height:170px;bottom:-75px; }.elo-ui main { padding:16px; }.project-info h3 { font-size:44px; }.carousel-dots { display:flex;gap:5px;margin-top:25px; }.carousel-dots i { width:22px;height:2px;background:#dadbe0;transition:background .2s,width .2s; }.carousel-dots i.active { width:42px;background:var(--accent); }
 
   .process-grid { grid-template-columns:1fr; }.process-step { min-height:230px; }.process-step h3 { margin-top:65px; }
   .differentials-grid { grid-template-columns:1fr; }.differential-card { min-height:220px; }

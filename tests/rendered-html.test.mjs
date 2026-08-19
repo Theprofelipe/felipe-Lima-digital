@@ -40,15 +40,21 @@ test("server-renders the complete home page", async () => {
   assert.match(html, /Explorar demonstração/);
   assert.match(html, /Classificação transparente/);
   assert.match(html, /Do novo contato à próxima ação/);
+  assert.match(html, /FieldOps/);
+  assert.match(html, /Sistema de gestão operacional/);
+  assert.match(html, /href="\/projetos\/fieldops"/);
+  assert.match(html, /Dashboard Cripto/);
   assert.equal((html.match(/href="\/projetos\/flowlead"/g) ?? []).length, 1);
+  assert.equal((html.match(/class="project-slide"/g) ?? []).length, 5);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
-test("server-renders the sites, blog and FlowLead routes", async () => {
-  const [sitesResponse, blogResponse, flowLeadResponse] = await Promise.all([
+test("server-renders the sites, blog, FlowLead and FieldOps routes", async () => {
+  const [sitesResponse, blogResponse, flowLeadResponse, fieldOpsResponse] = await Promise.all([
     request("/sites"),
     request("/blog"),
     request("/projetos/flowlead"),
+    request("/projetos/fieldops"),
   ]);
 
   assert.equal(sitesResponse.status, 200);
@@ -64,6 +70,18 @@ test("server-renders the sites, blog and FlowLead routes", async () => {
   assert.match(flowLeadHtml, /O que uma versão real poderia integrar/);
   assert.match(flowLeadHtml, /O que não está ativo aqui/);
   assert.match(flowLeadHtml, /Solicitar solução semelhante/);
+
+  assert.equal(fieldOpsResponse.status, 200);
+  const fieldOpsHtml = await fieldOpsResponse.text();
+  assert.match(fieldOpsHtml, /FieldOps/);
+  assert.match(fieldOpsHtml, /Projeto autoral demonstrativo/);
+  assert.match(fieldOpsHtml, /Operação de campo/);
+  assert.match(fieldOpsHtml, /Dados totalmente fictícios/);
+  assert.match(fieldOpsHtml, /Regra de risco transparente/);
+  assert.match(fieldOpsHtml, /O que esta demonstração faz/);
+  assert.match(fieldOpsHtml, /O que uma versão real poderia integrar/);
+  assert.match(fieldOpsHtml, /O que não está ativo aqui/);
+  assert.match(fieldOpsHtml, /Solicitar solução semelhante/);
 });
 
 test("publishes host-aware robots and sitemap routes", async () => {
@@ -80,6 +98,7 @@ test("publishes host-aware robots and sitemap routes", async () => {
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/sites<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/blog<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/projetos\/flowlead<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/projetos\/fieldops<\/loc>/);
 });
 
 test("keeps editable content centralized and optional assets resilient", async () => {
@@ -95,6 +114,10 @@ test("keeps editable content centralized and optional assets resilient", async (
   assert.match(data, /slug: "flowlead"/);
   assert.match(data, /detailUrl: "\/projetos\/flowlead"/);
   assert.match(data, /Classificação transparente/);
+  assert.match(data, /slug: "fieldops"/);
+  assert.match(data, /detailUrl: "\/projetos\/fieldops"/);
+  assert.match(data, /Sistema de gestão operacional/);
+  assert.match(data, /slug: "dashboard-cripto"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await assert.rejects(access(new URL("app/_sites-preview", projectRoot)));
