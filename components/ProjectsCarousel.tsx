@@ -7,14 +7,17 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const featuredProject = projects.find((project) => project.slug === "flowlead");
-  const visibleProjects = compact ? projects : projects.filter((project) => project.slug === "fieldops");
+  const visibleProjects = compact
+    ? projects
+    : projects.filter((project) => ["fieldops", "nexo-agenda"].includes(project.slug));
 
   const move = (direction: -1 | 1) => {
     const next = Math.min(Math.max(active + direction, 0), visibleProjects.length - 1);
     const track = trackRef.current;
     if (!track) return;
     const slide = track.children[next] as HTMLElement | undefined;
-    slide?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    slide?.scrollIntoView({ behavior, block: "nearest", inline: "start" });
     setActive(next);
   };
 
@@ -73,17 +76,17 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
         </a>
       )}
 
-      {!compact && <div className="projects-secondary-label"><span>Outro projeto</span><i /></div>}
+      {!compact && <div className="projects-secondary-label"><span>Outros projetos</span><i /></div>}
       {visibleProjects.length > 1 && (
         <div className="carousel-toolbar">
-          <p aria-live="polite">{String(active + 1).padStart(2, "0")} / {String(visibleProjects.length).padStart(2, "0")}</p>
+          <p aria-live="polite" aria-atomic="true" aria-label={`Projeto ${active + 1} de ${visibleProjects.length}`}>{String(active + 1).padStart(2, "0")} / {String(visibleProjects.length).padStart(2, "0")}</p>
           <div>
             <button type="button" aria-label="Projeto anterior" onClick={() => move(-1)} disabled={active === 0}>←</button>
             <button type="button" aria-label="Próximo projeto" onClick={() => move(1)} disabled={active === visibleProjects.length - 1}>→</button>
           </div>
         </div>
       )}
-      <div className="projects-track" ref={trackRef} onScroll={onScroll} aria-label="Projetos selecionados">
+      <div className="projects-track" ref={trackRef} onScroll={onScroll} role="region" aria-roledescription="carrossel" aria-label="Projetos adicionais selecionados">
         {visibleProjects.map((project) => (
           <article className="project-slide" key={project.slug} aria-label={`${project.name}, ${project.category}`}>
             <div className={`project-art project-art-${project.tone}`}>
@@ -125,6 +128,32 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
                       <div className="fieldops-project-metrics"><span><small>EM ABERTO</small><strong>05</strong></span><span><small>EM ROTA</small><strong>01</strong></span><span><small>EM RISCO</small><strong>03</strong></span></div>
                       <div className="fieldops-project-orders"><span><i>FO-1042</i><b>Inspeção técnica</b><em>Urgente</em></span><span><i>FO-1043</i><b>Manutenção preventiva</b><em>Em rota</em></span></div>
                     </main>
+                  </div>
+                )}
+                {project.visual === "nexo" && (
+                  <div className="nexo-project-ui">
+                    <header>
+                      <div><b>NA</b><strong>Nexo Agenda</strong></div>
+                      <em><i /> Agenda ativa</em>
+                    </header>
+                    <main>
+                      <div className="nexo-project-week">
+                        <span><small>SEG</small><b>18</b></span>
+                        <span><small>TER</small><b>19</b></span>
+                        <span className="is-current"><small>QUA</small><b>20</b></span>
+                        <span><small>QUI</small><b>21</b></span>
+                        <span><small>SEX</small><b>22</b></span>
+                      </div>
+                      <div className="nexo-project-agenda">
+                        <aside><time>08:00</time><time>10:00</time><time>14:30</time></aside>
+                        <section>
+                          <div className="is-confirmed"><span><strong>Amanda Torres</strong><small>Corte · Helena</small></span><em>Confirmado</em></div>
+                          <div className="is-selected"><span><strong>Henrique Barros</strong><small>Coloração · Caio</small></span><em>Selecionado</em></div>
+                          <div className="is-free"><span><strong>Horário livre</strong><small>Disponível para encaixe</small></span><em>+3 espera</em></div>
+                        </section>
+                      </div>
+                    </main>
+                    <footer><span>2 confirmações</span><strong>3 na lista de espera</strong></footer>
                   </div>
                 )}
                 {project.visual === "dashboard" && (

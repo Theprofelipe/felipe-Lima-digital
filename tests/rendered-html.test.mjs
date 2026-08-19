@@ -42,13 +42,20 @@ test("server-renders the complete home page", async () => {
   assert.match(html, /FieldOps/);
   assert.match(html, /Sistema de gestão operacional/);
   assert.match(html, /href="\/projetos\/fieldops"/);
+  assert.match(html, /Nexo Agenda/);
+  assert.match(html, /Agendamento e experiência do cliente/);
+  assert.match(html, /Plataforma interativa criada para organizar horários, clientes, confirmações e lista de espera/);
+  assert.match(html, /href="\/projetos\/nexo-agenda"/);
   assert.equal((html.match(/href="\/projetos\/flowlead"/g) ?? []).length, 1);
-  assert.equal((html.match(/class="project-slide"/g) ?? []).length, 1);
+  assert.equal((html.match(/class="project-slide"/g) ?? []).length, 2);
   assert.doesNotMatch(html, /aria-label="Felipe Lima Digital,/);
   assert.doesNotMatch(html, /aria-label="Batata Pipas,/);
   assert.doesNotMatch(html, /aria-label="Dashboard Cripto,/);
   assert.doesNotMatch(html, /aria-label="Cafeteria Landing,/);
-  assert.doesNotMatch(html, /Projeto anterior|Próximo projeto|carousel-dots/);
+  assert.match(html, /aria-label="Projeto 1 de 2"/);
+  assert.match(html, /Projeto anterior/);
+  assert.match(html, /Próximo projeto/);
+  assert.match(html, /carousel-dots/);
   assert.match(html, /O que construímos/);
   assert.match(html, /Automação &amp; Inteligência Artificial/);
   assert.match(html, /Sites que trabalham/);
@@ -61,12 +68,13 @@ test("server-renders the complete home page", async () => {
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
-test("server-renders the sites, blog, FlowLead and FieldOps routes", async () => {
-  const [sitesResponse, blogResponse, flowLeadResponse, fieldOpsResponse] = await Promise.all([
+test("server-renders the sites, blog, FlowLead, FieldOps and Nexo Agenda routes", async () => {
+  const [sitesResponse, blogResponse, flowLeadResponse, fieldOpsResponse, nexoAgendaResponse] = await Promise.all([
     request("/sites"),
     request("/blog"),
     request("/projetos/flowlead"),
     request("/projetos/fieldops"),
+    request("/projetos/nexo-agenda"),
   ]);
 
   assert.equal(sitesResponse.status, 200);
@@ -94,6 +102,17 @@ test("server-renders the sites, blog, FlowLead and FieldOps routes", async () =>
   assert.match(fieldOpsHtml, /O que uma versão real poderia integrar/);
   assert.match(fieldOpsHtml, /O que não está ativo aqui/);
   assert.match(fieldOpsHtml, /Solicitar solução semelhante/);
+
+  assert.equal(nexoAgendaResponse.status, 200);
+  const nexoAgendaHtml = await nexoAgendaResponse.text();
+  assert.match(nexoAgendaHtml, /Nexo Agenda/);
+  assert.match(nexoAgendaHtml, /Projeto autoral/);
+  assert.match(nexoAgendaHtml, /Agenda da Casa Lume/);
+  assert.match(nexoAgendaHtml, /Dados fictícios/);
+  assert.match(nexoAgendaHtml, /O que esta demonstração faz/);
+  assert.match(nexoAgendaHtml, /O que uma versão real poderia integrar/);
+  assert.match(nexoAgendaHtml, /O que não está ativo aqui/);
+  assert.match(nexoAgendaHtml, /Solicitar solução semelhante/);
 });
 
 test("publishes host-aware robots and sitemap routes", async () => {
@@ -111,6 +130,7 @@ test("publishes host-aware robots and sitemap routes", async () => {
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/blog<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/projetos\/flowlead<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/projetos\/fieldops<\/loc>/);
+  assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/projetos\/nexo-agenda<\/loc>/);
 });
 
 test("keeps editable content centralized and optional assets resilient", async () => {
@@ -129,6 +149,9 @@ test("keeps editable content centralized and optional assets resilient", async (
   assert.match(data, /slug: "fieldops"/);
   assert.match(data, /detailUrl: "\/projetos\/fieldops"/);
   assert.match(data, /Sistema de gestão operacional/);
+  assert.match(data, /slug: "nexo-agenda"/);
+  assert.match(data, /detailUrl: "\/projetos\/nexo-agenda"/);
+  assert.match(data, /Agendamento e experiência do cliente/);
   assert.match(data, /slug: "dashboard-cripto"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 

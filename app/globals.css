@@ -2385,8 +2385,8 @@ img {
 }
 
 .carousel-toolbar button {
-  width: 42px;
-  height: 42px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--line);
   border-radius: 50%;
   color: var(--ink);
@@ -2404,6 +2404,11 @@ img {
 .carousel-toolbar button:disabled {
   cursor: default;
   opacity: 0.28;
+}
+
+.carousel-toolbar button:focus-visible {
+  outline: 3px solid rgba(99, 91, 201, .28);
+  outline-offset: 3px;
 }
 
 .projects-track {
@@ -2467,6 +2472,7 @@ img {
 .project-art-sky { background: linear-gradient(145deg, #b9e2f5, #69acd2 48%, #356b8d); }
 .project-art-navy { background: linear-gradient(145deg, #aebbe8, #526aab 48%, #273553); }
 .project-art-teal { background: linear-gradient(145deg, #b8e2dc, #559f9c 48%, #245c60); }
+.project-art-nexo { background: linear-gradient(145deg, #e2d8f2, #927ab9 48%, #4b3d69); }
 .project-art-coffee { background: linear-gradient(145deg, #dfc9af, #a7795c 50%, #604637); }
 
 .concept-label {
@@ -2841,6 +2847,185 @@ img {
   background: #e6f0f8;
 }
 
+.nexo-project-ui {
+  min-height: 315px;
+  display: grid;
+  grid-template-rows: 46px 1fr 39px;
+  color: #323044;
+  background:
+    radial-gradient(circle at 88% 8%, rgba(126, 98, 182, .12), transparent 32%),
+    #f7f5fa;
+}
+
+.nexo-project-ui > header,
+.nexo-project-ui > footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 18px;
+}
+
+.nexo-project-ui > header {
+  border-bottom: 1px solid rgba(65, 52, 92, .09);
+  background: rgba(255, 255, 255, .62);
+}
+
+.nexo-project-ui > header > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.nexo-project-ui > header b {
+  width: 27px;
+  height: 27px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #fff;
+  background: #625080;
+  font-size: 8px;
+}
+
+.nexo-project-ui > header strong {
+  font-size: 10px;
+  letter-spacing: -.02em;
+}
+
+.nexo-project-ui > header em {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6e6879;
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 650;
+}
+
+.nexo-project-ui > header em i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3d9c79;
+  box-shadow: 0 0 0 3px rgba(61, 156, 121, .12);
+}
+
+.nexo-project-ui > main {
+  padding: 13px 16px;
+}
+
+.nexo-project-week {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  overflow: hidden;
+  border: 1px solid rgba(65, 52, 92, .08);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .86);
+}
+
+.nexo-project-week span {
+  min-height: 39px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 2px;
+  border-right: 1px solid rgba(65, 52, 92, .07);
+}
+
+.nexo-project-week span:last-child { border-right: 0; }
+.nexo-project-week small { color: #8b8594; font-size: 7px; letter-spacing: .06em; }
+.nexo-project-week b { font-size: 10px; }
+.nexo-project-week .is-current { color: #5d4a82; background: #eee9f7; }
+.nexo-project-week .is-current small { color: #69578c; }
+
+.nexo-project-agenda {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 8px;
+  margin-top: 9px;
+}
+
+.nexo-project-agenda > aside,
+.nexo-project-agenda > section {
+  display: grid;
+  grid-template-rows: repeat(3, minmax(39px, 1fr));
+  gap: 6px;
+}
+
+.nexo-project-agenda > aside time {
+  align-self: center;
+  color: #8a8592;
+  font-size: 8px;
+}
+
+.nexo-project-agenda > section > div {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid rgba(65, 52, 92, .09);
+  border-left: 3px solid #4f9d7b;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, .9);
+}
+
+.nexo-project-agenda > section > div.is-selected {
+  border-color: rgba(103, 81, 143, .24);
+  border-left-color: #6c56a0;
+  background: #f1edf8;
+  box-shadow: 0 5px 12px rgba(78, 58, 113, .08);
+}
+
+.nexo-project-agenda > section > div.is-free {
+  border-style: dashed;
+  border-left-color: #a49aaf;
+  background: rgba(255, 255, 255, .5);
+}
+
+.nexo-project-agenda span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.nexo-project-agenda strong,
+.nexo-project-agenda small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nexo-project-agenda strong { font-size: 8px; }
+.nexo-project-agenda small { color: #7c7785; font-size: 7px; }
+
+.nexo-project-agenda em {
+  padding: 4px 6px;
+  border-radius: 999px;
+  color: #277458;
+  background: #e4f3ed;
+  font-size: 7px;
+  font-style: normal;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.nexo-project-agenda .is-selected em { color: #5e478c; background: #e4dbf4; }
+.nexo-project-agenda .is-free em { color: #716979; background: #ece9ef; }
+
+.nexo-project-ui > footer {
+  border-top: 1px solid rgba(65, 52, 92, .08);
+  color: #817a8b;
+  background: rgba(255, 255, 255, .55);
+  font-size: 8px;
+}
+
+.nexo-project-ui > footer strong {
+  color: #5e4c7d;
+  font-size: 8px;
+}
+
 .atlas-ui {
   min-height: 315px;
   display: grid;
@@ -2932,7 +3117,7 @@ img {
 }
 
 .project-link {
-  min-height: 43px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
@@ -3854,6 +4039,7 @@ img {
   .sites-panel { padding:48px 24px;border-radius:24px; }.sites-panel-copy h2 { font-size:50px; }.site-device-visual { height:380px;width:125%;margin:5px 0 -40px;transform:scale(.78);transform-origin:top left; }.sites-panel .site-device-visual { margin-bottom:-115px; }
 
   .projects-carousel { margin-top:48px; }.flowlead-feature-card { min-height:0;gap:38px;padding:34px 22px;border-radius:24px; }.flowlead-feature-copy h3 { font-size:clamp(40px,11.8vw,56px); }.flowlead-feature-copy>p { font-size:15px; }.flowlead-feature-copy li { font-size:13px; }.flowlead-feature-cta { width:100%;justify-content:space-between; }.flowlead-feature-window { min-height:390px;border-width:5px;transform:none; }.flowlead-feature-window>main { padding:14px; }.flowlead-feature-preview-heading,.flowlead-feature-priority { min-height:90px; }.flowlead-feature-summary,.flowlead-feature-progress { padding:13px; }.projects-secondary-label { margin-top:42px; }.project-art { min-height:350px;border-radius:18px; }.project-browser { width:90%;border-width:5px; }.flowlead-project-ui,.felipe-project-ui,.batata-project-ui,.fieldops-project-ui,.atlas-ui,.nativa-ui,.elo-ui { min-height:235px; }.flowlead-project-ui,.felipe-project-ui,.batata-project-ui { grid-template-rows:36px 1fr 36px; }.flowlead-project-ui main { padding:17px 14px; }.flowlead-mini-flow span { min-width:55px;padding-inline:5px; }.flowlead-mini-flow i { padding-inline:4px; }.flowlead-mini-grid { margin-top:18px; }.flowlead-mini-grid section { min-height:70px;padding:10px; }.felipe-project-ui main { padding:18px; }.felipe-project-ui main h3 { margin:8px 0 15px;font-size:23px; }.felipe-project-ui main i { min-height:34px; }.batata-project-ui main { padding:17px; }.batata-project-ui main h3 { margin:7px 0 11px;font-size:20px; }.batata-products i { height:48px; }.fieldops-project-ui main { padding:14px; }.fieldops-project-metrics span { min-height:47px; }.fieldops-project-orders span { min-height:42px; }.atlas-ui main { padding:17px; }.atlas-chart { height:85px;padding:10px; }.nativa-ui>div { margin-top:48px; }.nativa-ui>div>i { width:170px;height:170px;bottom:-75px; }.elo-ui main { padding:16px; }.project-info h3 { font-size:44px; }.carousel-dots { display:flex;gap:5px;margin-top:25px; }.carousel-dots i { width:22px;height:2px;background:#dadbe0;transition:background .2s,width .2s; }.carousel-dots i.active { width:42px;background:var(--accent); }
+  .nexo-project-ui { min-height:235px;grid-template-rows:36px 1fr 31px; }.nexo-project-ui>header,.nexo-project-ui>footer { padding-inline:10px; }.nexo-project-ui>header b { width:23px;height:23px; }.nexo-project-ui>main { padding:8px 10px; }.nexo-project-week span { min-height:30px; }.nexo-project-agenda { grid-template-columns:31px 1fr;gap:6px;margin-top:6px; }.nexo-project-agenda>aside,.nexo-project-agenda>section { grid-template-rows:repeat(3,minmax(29px,1fr));gap:4px; }.nexo-project-agenda>section>div { gap:5px;padding:4px 6px; }.nexo-project-agenda em { padding:3px 5px; }
 
   .process-grid { grid-template-columns:1fr; }.process-step { min-height:230px; }.process-step h3 { margin-top:65px; }
   .differentials-grid { grid-template-columns:1fr; }.differential-card { min-height:220px; }
