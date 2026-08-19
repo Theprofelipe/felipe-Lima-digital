@@ -7,7 +7,7 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const featuredProject = projects.find((project) => project.slug === "flowlead");
-  const visibleProjects = compact ? projects : projects.filter((project) => project.slug !== "flowlead");
+  const visibleProjects = compact ? projects : projects.filter((project) => project.slug === "fieldops");
 
   const move = (direction: -1 | 1) => {
     const next = Math.min(Math.max(active + direction, 0), visibleProjects.length - 1);
@@ -73,14 +73,16 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
         </a>
       )}
 
-      {!compact && <div className="projects-secondary-label"><span>Outros projetos</span><i /></div>}
-      <div className="carousel-toolbar">
-        <p aria-live="polite">{String(active + 1).padStart(2, "0")} / {String(visibleProjects.length).padStart(2, "0")}</p>
-        <div>
-          <button type="button" aria-label="Projeto anterior" onClick={() => move(-1)} disabled={active === 0}>←</button>
-          <button type="button" aria-label="Próximo projeto" onClick={() => move(1)} disabled={active === visibleProjects.length - 1}>→</button>
+      {!compact && <div className="projects-secondary-label"><span>Outro projeto</span><i /></div>}
+      {visibleProjects.length > 1 && (
+        <div className="carousel-toolbar">
+          <p aria-live="polite">{String(active + 1).padStart(2, "0")} / {String(visibleProjects.length).padStart(2, "0")}</p>
+          <div>
+            <button type="button" aria-label="Projeto anterior" onClick={() => move(-1)} disabled={active === 0}>←</button>
+            <button type="button" aria-label="Próximo projeto" onClick={() => move(1)} disabled={active === visibleProjects.length - 1}>→</button>
+          </div>
         </div>
-      </div>
+      )}
       <div className="projects-track" ref={trackRef} onScroll={onScroll} aria-label="Projetos selecionados">
         {visibleProjects.map((project) => (
           <article className="project-slide" key={project.slug} aria-label={`${project.name}, ${project.category}`}>
@@ -147,9 +149,11 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
           </article>
         ))}
       </div>
-      <div className="carousel-dots" aria-hidden="true">
-        {visibleProjects.map((project, index) => <i key={project.slug} className={index === active ? "active" : ""} />)}
-      </div>
+      {visibleProjects.length > 1 && (
+        <div className="carousel-dots" aria-hidden="true">
+          {visibleProjects.map((project, index) => <i key={project.slug} className={index === active ? "active" : ""} />)}
+        </div>
+      )}
     </div>
   );
 }

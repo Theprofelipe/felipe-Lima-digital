@@ -35,7 +35,6 @@ test("server-renders the complete home page", async () => {
   assert.match(html, /Criamos tecnologia/);
   assert.match(html, /Soluções digitais/);
   assert.match(html, /Felipe Lima Machado/);
-  assert.match(html, /Projeto conceito/);
   assert.match(html, /flowlead-feature-card/);
   assert.match(html, /Explorar demonstração/);
   assert.match(html, /Classificação transparente/);
@@ -43,9 +42,22 @@ test("server-renders the complete home page", async () => {
   assert.match(html, /FieldOps/);
   assert.match(html, /Sistema de gestão operacional/);
   assert.match(html, /href="\/projetos\/fieldops"/);
-  assert.match(html, /Dashboard Cripto/);
   assert.equal((html.match(/href="\/projetos\/flowlead"/g) ?? []).length, 1);
-  assert.equal((html.match(/class="project-slide"/g) ?? []).length, 5);
+  assert.equal((html.match(/class="project-slide"/g) ?? []).length, 1);
+  assert.doesNotMatch(html, /aria-label="Felipe Lima Digital,/);
+  assert.doesNotMatch(html, /aria-label="Batata Pipas,/);
+  assert.doesNotMatch(html, /aria-label="Dashboard Cripto,/);
+  assert.doesNotMatch(html, /aria-label="Cafeteria Landing,/);
+  assert.doesNotMatch(html, /Projeto anterior|Próximo projeto|carousel-dots/);
+  assert.match(html, /O que construímos/);
+  assert.match(html, /Automação &amp; Inteligência Artificial/);
+  assert.match(html, /Sites que trabalham/);
+  assert.match(html, /Como trabalhamos/);
+  assert.match(html, /O que orienta cada entrega/);
+  assert.match(html, /Quem está por trás/);
+  assert.match(html, /Tecnologia explicada/);
+  assert.match(html, /Perguntas frequentes/);
+  assert.match(html, /Seu próximo projeto/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
