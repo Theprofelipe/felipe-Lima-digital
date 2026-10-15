@@ -1,6 +1,6 @@
 export async function GET(request: Request) {
   const origin = new URL(request.url).origin;
-  const routes = ["", "/sites", "/blog", "/projetos/flowlead", "/projetos/fieldops", "/projetos/nexo-agenda"];
+  const routes = ["", "/servicos", "/sites", "/blog", "/projetos/flowlead", "/projetos/fieldops", "/projetos/nexo-agenda"];
   const urls = routes
     .map((route) => `<url><loc>${origin}${route || "/"}</loc><changefreq>${route === "" ? "weekly" : "monthly"}</changefreq><priority>${route === "" ? "1.0" : "0.8"}</priority></url>`)
     .join("");

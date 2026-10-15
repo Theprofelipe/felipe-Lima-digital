@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-html-link-for-pages -- Links nativos evitam uma falha de prefetch do adaptador Vinext atual. */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { contactLinks, navigation } from "../data/site";
 
 export function Brand() {
@@ -20,11 +20,15 @@ export function Brand() {
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -53,6 +57,7 @@ export function Navbar() {
         </a>
 
         <button
+          ref={menuButtonRef}
           className={`menu-toggle ${open ? "is-open" : ""}`}
           type="button"
           aria-label={open ? "Fechar menu" : "Abrir menu"}
@@ -70,6 +75,7 @@ export function Navbar() {
         className={`mobile-nav ${open ? "is-open" : ""}`}
         aria-label="Navegação mobile"
         aria-hidden={!open}
+        inert={!open}
       >
         <div className="mobile-nav-inner">
           {navigation.map((item, index) => (

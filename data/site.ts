@@ -44,7 +44,7 @@ export const contactLinks = {
 
 export const navigation = [
   { label: "Início", href: "/#inicio" },
-  { label: "Serviços", href: "/#servicos" },
+  { label: "Serviços e pacotes", href: "/servicos" },
   { label: "Sites", href: "/sites" },
   { label: "Projetos", href: "/#projetos" },
   { label: "Blog", href: "/blog" },

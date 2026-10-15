@@ -68,14 +68,28 @@ test("server-renders the complete home page", async () => {
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Your site is taking shape/i);
 });
 
-test("server-renders the sites, blog, FlowLead, FieldOps and Nexo Agenda routes", async () => {
-  const [sitesResponse, blogResponse, flowLeadResponse, fieldOpsResponse, nexoAgendaResponse] = await Promise.all([
+test("server-renders the services, sites, blog, FlowLead, FieldOps and Nexo Agenda routes", async () => {
+  const [servicesResponse, sitesResponse, blogResponse, flowLeadResponse, fieldOpsResponse, nexoAgendaResponse] = await Promise.all([
+    request("/servicos"),
     request("/sites"),
     request("/blog"),
     request("/projetos/flowlead"),
     request("/projetos/fieldops"),
     request("/projetos/nexo-agenda"),
   ]);
+
+  assert.equal(servicesResponse.status, 200);
+  const servicesHtml = await servicesResponse.text();
+  assert.match(servicesHtml, /Da presença digital/);
+  assert.match(servicesHtml, /Cinco formas de fazer o digital trabalhar melhor/);
+  assert.match(servicesHtml, /Presença Digital/);
+  assert.match(servicesHtml, /Site Profissional/);
+  assert.match(servicesHtml, /Experiência Premium/);
+  assert.match(servicesHtml, /Conteúdo Essencial/);
+  assert.match(servicesHtml, /Conteúdo Plus/);
+  assert.match(servicesHtml, /Solicitar solução personalizada/);
+  assert.equal((servicesHtml.match(/<a class="service-package-cta"/g) ?? []).length, 8);
+  assert.doesNotMatch(servicesHtml, /R\$|mensalidade|desconto/i);
 
   assert.equal(sitesResponse.status, 200);
   assert.match(await sitesResponse.text(), /Seu site precisa fazer mais/);
@@ -126,6 +140,7 @@ test("publishes host-aware robots and sitemap routes", async () => {
 
   assert.equal(sitemapResponse.status, 200);
   const sitemap = await sitemapResponse.text();
+  assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/servicos<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/sites<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/blog<\/loc>/);
   assert.match(sitemap, /<loc>https:\/\/felipe-lima\.test\/projetos\/flowlead<\/loc>/);
