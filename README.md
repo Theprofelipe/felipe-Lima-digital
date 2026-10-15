@@ -33,11 +33,13 @@ npm run build:vercel
 ```text
 app/
   blog/             página de insights
+  servicos/         página de serviços e pacotes
   sites/            página do serviço de criação de sites
   robots.txt/       robots gerado com a origem atual
   sitemap.xml/      sitemap gerado com a origem atual
 components/         componentes visuais e interativos
 data/site.ts        conteúdo editável e configurações
+data/services.ts    pacotes, contratação e dúvidas da página de serviços
 public/images/      fotografia do fundador e imagens gerais
 public/media/       vídeos ou fundos futuros
 public/projects/    imagens futuras de projetos reais
@@ -56,6 +58,17 @@ Edite `data/site.ts`. O arquivo concentra:
 - diferenciais;
 - artigos;
 - perguntas frequentes.
+
+### Serviços e pacotes
+
+A rota `/servicos` apresenta a jornada “Da presença digital à operação inteligente”, demonstrações locais dos serviços, pacotes comerciais, contratação e FAQ.
+
+- Edite nomes, públicos, benefícios, entregáveis e dúvidas em `data/services.ts`.
+- Edite a composição e os textos editoriais em `app/servicos/page.tsx`.
+- As demonstrações interativas ficam em `components/services/`.
+- Os visuais autorais usados pela página ficam em `public/images/services/`.
+
+As demonstrações são identificadas como simulações e não enviam dados nem executam automações ou chamadas de inteligência artificial.
 
 ### Contato
 

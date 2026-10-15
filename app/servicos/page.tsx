@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Footer } from "../../components/Footer";
 import { Navbar } from "../../components/Navbar";
 import {
@@ -28,26 +29,39 @@ function packageMessage(item: ServicePackage) {
   return `Olá! Vim pelo site da Felipe Lima Digital e gostaria de solicitar uma proposta de ${item.category} — ${item.name}.`;
 }
 
-function PackageCard({ item, index }: { item: ServicePackage; index: number }) {
+function PackageEntry({
+  item,
+  index,
+  composition,
+}: {
+  item: ServicePackage;
+  index: number;
+  composition: "anchor" | "support" | "stream" | "duet";
+}) {
   return (
-    <article className={`service-package-card service-package-card-${index + 1}`} data-service-reveal>
+    <article
+      className={`service-package-entry service-package-entry-${index} is-${composition}`}
+      data-service-sequence-item
+    >
       <div className="service-package-heading">
-        <span>{String(index + 1).padStart(2, "0")}</span>
+        <span>{String(index).padStart(2, "0")}</span>
         <div>
           <small>{item.category}</small>
           <h4>{item.name}</h4>
         </div>
       </div>
-      <div className="service-package-audience">
-        <span>Para quem serve</span>
-        <p>{item.audience}</p>
-      </div>
-      <div className="service-package-benefit">
-        <span>Vantagem principal</span>
-        <strong>{item.benefit}</strong>
+      <div className="service-package-story">
+        <div className="service-package-audience">
+          <span>Quando faz sentido</span>
+          <p>{item.audience}</p>
+        </div>
+        <div className="service-package-benefit">
+          <span>O avanço</span>
+          <strong>{item.benefit}</strong>
+        </div>
       </div>
       <div className="service-package-deliverables">
-        <span>Entregáveis</span>
+        <span>O que entra em cena</span>
         <ul>
           {item.deliverables.map((deliverable) => <li key={deliverable}>{deliverable}</li>)}
         </ul>
@@ -59,7 +73,7 @@ function PackageCard({ item, index }: { item: ServicePackage; index: number }) {
         rel="noopener noreferrer"
         aria-label={`Solicitar proposta de ${item.category} — ${item.name} pelo WhatsApp`}
       >
-        Solicitar proposta deste pacote <span aria-hidden="true">↗</span>
+        Solicitar proposta <span aria-hidden="true">↗</span>
       </a>
     </article>
   );
@@ -103,26 +117,37 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="services-journey" aria-label="Da presença digital à operação inteligente">
-              <div className="services-journey-head">
-                <span>Mapa de evolução</span>
-                <small>Escolha o ponto que faz sentido agora</small>
+            <div className="services-journey-shell" data-service-parallax="0.08">
+              <Image
+                className="services-journey-art"
+                src="/images/services/presence-orbit.webp"
+                alt="Composição autoral de planos translúcidos formando um portal digital violeta"
+                fill
+                priority
+                sizes="(max-width: 1020px) 92vw, 42vw"
+              />
+              <div className="services-journey" aria-label="Da presença digital à operação inteligente">
+                <div className="services-journey-head">
+                  <span>Mapa de evolução</span>
+                  <small>Escolha o ponto que faz sentido agora</small>
+                </div>
+                <ol>
+                  <li className="is-current">
+                    <span>01</span>
+                    <div><strong>Posicionar</strong><small>Sites que apresentam com clareza.</small></div>
+                  </li>
+                  <li>
+                    <span>02</span>
+                    <div><strong>Evoluir</strong><small>Manutenção e conteúdo em movimento.</small></div>
+                  </li>
+                  <li>
+                    <span>03</span>
+                    <div><strong>Conectar</strong><small>Automações e IA sob medida.</small></div>
+                  </li>
+                </ol>
+                <div className="services-journey-orbit" aria-hidden="true"><i /><i /><i /><span>FL</span></div>
               </div>
-              <ol>
-                <li className="is-current">
-                  <span>01</span>
-                  <div><strong>Posicionar</strong><small>Sites que apresentam com clareza.</small></div>
-                </li>
-                <li>
-                  <span>02</span>
-                  <div><strong>Evoluir</strong><small>Manutenção e conteúdo em movimento.</small></div>
-                </li>
-                <li>
-                  <span>03</span>
-                  <div><strong>Conectar</strong><small>Automações e IA sob medida.</small></div>
-                </li>
-              </ol>
-              <div className="services-journey-orbit" aria-hidden="true"><i /><i /><i /><span>FL</span></div>
+              <p className="services-journey-caption"><span>Demonstração visual autoral</span> Clareza antes da complexidade.</p>
             </div>
           </div>
           <div className="container services-hero-foot">
@@ -137,12 +162,12 @@ export default function ServicesPage() {
             <p className="services-kicker"><i /> Serviços em composição</p>
             <div>
               <h2>Cinco formas de fazer o digital trabalhar melhor.</h2>
-              <p>Explore as demonstrações. Elas são locais e ilustrativas, mas ajudam a visualizar como cada frente pode ganhar forma no seu negócio.</p>
+              <p>Explore demonstrações do processo Felipe Lima Digital: interfaces simuladas em código para mostrar como cada serviço organiza uma decisão real.</p>
             </div>
           </div>
 
           <div className="container service-labs">
-            <article className="service-lab service-lab-sites" data-service-reveal>
+            <article className="service-lab service-lab-sites" id="criacao-de-sites" data-service-reveal>
               <div className="service-lab-copy">
                 <span className="service-lab-number">01</span>
                 <p className="service-lab-category">Criação de sites</p>
@@ -152,7 +177,7 @@ export default function ServicesPage() {
               <SitesDemo />
             </article>
 
-            <article className="service-lab service-lab-maintenance" data-service-reveal>
+            <article className="service-lab service-lab-maintenance" id="manutencao" data-service-reveal>
               <div className="service-lab-copy">
                 <span className="service-lab-number">02</span>
                 <p className="service-lab-category">Manutenção</p>
@@ -162,7 +187,7 @@ export default function ServicesPage() {
               <MaintenanceDemo />
             </article>
 
-            <article className="service-lab service-lab-social" data-service-reveal>
+            <article className="service-lab service-lab-social" id="redes-sociais" data-service-reveal>
               <div className="service-lab-copy">
                 <span className="service-lab-number">03</span>
                 <p className="service-lab-category">Redes sociais</p>
@@ -172,7 +197,7 @@ export default function ServicesPage() {
               <SocialDemo />
             </article>
 
-            <article className="service-lab service-lab-automation" data-service-reveal>
+            <article className="service-lab service-lab-automation" id="automacoes" data-service-reveal>
               <div className="service-lab-copy">
                 <span className="service-lab-number">04</span>
                 <p className="service-lab-category">Automações</p>
@@ -182,7 +207,7 @@ export default function ServicesPage() {
               <AutomationDemo />
             </article>
 
-            <article className="service-lab service-lab-ai" data-service-reveal>
+            <article className="service-lab service-lab-ai" id="inteligencia-artificial" data-service-reveal>
               <div className="service-lab-copy">
                 <span className="service-lab-number">05</span>
                 <p className="service-lab-category">Inteligência artificial</p>
@@ -202,7 +227,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="services-chapters">
-            <section className="service-chapter service-chapter-one">
+            <section className="service-chapter service-chapter-one" data-service-chapter>
               <div className="container service-chapter-layout">
                 <header className="service-chapter-heading">
                   <span>Capítulo 01</span>
@@ -213,14 +238,25 @@ export default function ServicesPage() {
                   <div className="service-package-group-heading" data-service-reveal>
                     <span>Categoria</span><h3>Criação de sites</h3><small>{sitesPackages.length} opções</small>
                   </div>
-                  <div className="service-package-grid service-package-grid-sites">
-                    {sitesPackages.map((item, index) => <PackageCard key={item.name} item={item} index={index} />)}
+                  <div className="service-package-atlas service-package-atlas-sites" data-service-sequence>
+                    <div className="service-package-guide">
+                      <span>Como comparar</span>
+                      <p>Comece pelo momento do negócio. Depois compare o avanço desejado e o que precisa entrar em cena.</p>
+                    </div>
+                    {sitesPackages.map((item, index) => (
+                      <PackageEntry
+                        key={item.name}
+                        item={item}
+                        index={index + 1}
+                        composition={index === 0 ? "anchor" : "support"}
+                      />
+                    ))}
                   </div>
                 </div>
               </div>
             </section>
 
-            <section className="service-chapter service-chapter-two">
+            <section className="service-chapter service-chapter-two" data-service-chapter>
               <div className="container service-chapter-layout">
                 <header className="service-chapter-heading">
                   <span>Capítulo 02</span>
@@ -228,27 +264,40 @@ export default function ServicesPage() {
                   <p>Continuidade para o site e para a comunicação, em duas categorias separadas e combináveis quando necessário.</p>
                 </header>
                 <div className="service-chapter-groups">
+                  <figure className="service-chapter-visual" data-service-parallax="0.055" data-service-reveal>
+                    <Image
+                      src="/images/services/continuity-field.webp"
+                      alt="Composição autoral de módulos editoriais conectados por um percurso azul"
+                      fill
+                      sizes="(max-width: 1020px) 92vw, 64vw"
+                    />
+                    <figcaption><span>Demonstração visual</span><strong>Continuidade transforma presença em ritmo.</strong></figcaption>
+                  </figure>
                   <div className="service-package-group">
                     <div className="service-package-group-heading" data-service-reveal>
                       <span>Categoria</span><h3>Manutenção</h3><small>{maintenancePackages.length} opções</small>
                     </div>
-                    <div className="service-package-grid service-package-grid-maintenance">
-                      {maintenancePackages.map((item, index) => <PackageCard key={item.name} item={item} index={index} />)}
+                    <div className="service-package-stream" data-service-sequence>
+                      {maintenancePackages.map((item, index) => (
+                        <PackageEntry key={item.name} item={item} index={index + 4} composition="stream" />
+                      ))}
                     </div>
                   </div>
                   <div className="service-package-group service-package-group-social">
                     <div className="service-package-group-heading" data-service-reveal>
                       <span>Categoria</span><h3>Redes sociais</h3><small>{socialPackages.length} opções</small>
                     </div>
-                    <div className="service-package-grid service-package-grid-social">
-                      {socialPackages.map((item, index) => <PackageCard key={item.name} item={item} index={index} />)}
+                    <div className="service-package-duet" data-service-sequence>
+                      {socialPackages.map((item, index) => (
+                        <PackageEntry key={item.name} item={item} index={index + 7} composition="duet" />
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
             </section>
 
-            <section className="service-chapter service-chapter-three">
+            <section className="service-chapter service-chapter-three" data-service-chapter>
               <div className="container service-chapter-layout">
                 <header className="service-chapter-heading">
                   <span>Capítulo 03</span>
@@ -256,8 +305,16 @@ export default function ServicesPage() {
                   <p>Soluções desenhadas a partir do processo, dos canais e das integrações de cada cliente.</p>
                 </header>
                 <article className="custom-solution" data-service-reveal>
+                  <Image
+                    className="custom-solution-art"
+                    src="/images/services/intelligent-flow.webp"
+                    alt="Composição autoral de um fluxo de luz conectando módulos de vidro"
+                    fill
+                    sizes="(max-width: 1020px) 92vw, 64vw"
+                  />
+                  <div className="custom-solution-shade" aria-hidden="true" />
                   <div className="custom-solution-title">
-                    <span>Contratação sob medida</span>
+                    <span>Demonstração visual · Contratação sob medida</span>
                     <h3>Automações e inteligência artificial</h3>
                     <p>Não existe plano fechado: o trabalho começa pelo diagnóstico e ganha um escopo próprio na proposta.</p>
                   </div>
@@ -328,4 +385,3 @@ export default function ServicesPage() {
     </>
   );
 }
-

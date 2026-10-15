@@ -56,27 +56,27 @@ export function SitesDemo() {
     <div className="service-demo service-demo-sites">
       <div className="service-demo-heading">
         <div>
-          <span>Prévia navegável</span>
-          <strong>Ateliê Horizonte</strong>
+          <span>Demonstração · Página de serviço</span>
+          <strong>Felipe Lima Digital</strong>
         </div>
         <DemoControls label="Formato da prévia" options={siteModes} selected={mode} onSelect={setMode} />
       </div>
 
       <div className={`site-preview-stage is-${mode}`} aria-live="polite">
         <div className="site-preview-device">
-          <DemoTopbar title={mode === "desktop" ? "ateliehorizonte.com" : "Prévia mobile"} />
+          <DemoTopbar title={mode === "desktop" ? "felipelima.digital/servicos" : "Prévia mobile"} />
           <div className="site-preview-page">
-            <div className="site-preview-nav"><b>horizonte.</b><span>Projetos&nbsp;&nbsp; Estúdio&nbsp;&nbsp; Contato</span><i>Conversar</i></div>
+            <div className="site-preview-nav"><b>FL Digital</b><span>Serviços&nbsp;&nbsp; Projetos&nbsp;&nbsp; Contato</span><i>Conversar</i></div>
             <div className="site-preview-copy">
-              <small>Arquitetura com intenção</small>
-              <h3>Espaços que começam<br />por boas perguntas.</h3>
-              <p>Projetos residenciais e comerciais pensados para a vida real.</p>
-              <span>Conhecer projetos</span>
+              <small>Serviços e pacotes</small>
+              <h3>Da presença digital<br />à operação inteligente.</h3>
+              <p>Uma oferta clara, organizada pelo momento de cada negócio.</p>
+              <span>Comparar pacotes</span>
             </div>
             <div className="site-preview-visual" aria-hidden="true">
               <i /><i /><i />
             </div>
-            <div className="site-preview-footer"><span>São Paulo</span><span>Arquitetura · Interiores</span></div>
+            <div className="site-preview-footer"><span>Demonstração em código</span><span>Sites · Automação · IA</span></div>
           </div>
         </div>
         <p className="service-demo-feedback">Composição adaptada para {mode === "desktop" ? "tela ampla" : "navegação por toque"}.</p>
@@ -86,23 +86,23 @@ export function SitesDemo() {
 }
 
 const maintenanceOptions = [
-  { value: "photo", label: "Foto" },
-  { value: "banner", label: "Banner" },
-  { value: "event", label: "Evento" },
+  { value: "photo", label: "Case" },
+  { value: "banner", label: "Campanha" },
+  { value: "event", label: "SEO" },
 ] as const;
 
 const maintenanceContent = {
   photo: {
-    title: "Nova imagem principal",
-    detail: "Foto atualizada na abertura da página.",
+    title: "Novo case publicado",
+    detail: "Imagem, contexto e resultado adicionados ao portfólio.",
   },
   banner: {
-    title: "Comunicado em destaque",
-    detail: "Banner preparado para uma nova campanha.",
+    title: "Campanha em destaque",
+    detail: "Mensagem e chamada para ação revisadas para a nova oferta.",
   },
   event: {
-    title: "Agenda atualizada",
-    detail: "Novo evento incluído na programação.",
+    title: "Busca atualizada",
+    detail: "Metadados, rota e sitemap revisados para indexação.",
   },
 } as const;
 
@@ -112,7 +112,7 @@ export function MaintenanceDemo() {
 
   return (
     <div className="service-demo service-demo-maintenance">
-      <DemoTopbar title="Central de atualizações" />
+      <DemoTopbar title="Demonstração · Rotina de manutenção" />
       <div className="maintenance-workspace">
         <div className="maintenance-sidebar">
           <span>O que atualizar</span>
@@ -123,11 +123,11 @@ export function MaintenanceDemo() {
           </div>
         </div>
         <div className={`maintenance-site-preview update-${update}`}>
-          <div className="maintenance-site-nav"><b>Casa Lume</b><span>Experiências&nbsp;&nbsp; Agenda</span></div>
+          <div className="maintenance-site-nav"><b>Felipe Lima Digital</b><span>Serviços&nbsp;&nbsp; Projetos</span></div>
           <div className="maintenance-hero-image" aria-hidden="true"><i /><i /></div>
-          <div className="maintenance-banner"><small>Em destaque</small><strong>Uma nova experiência começa aqui.</strong></div>
-          <div className="maintenance-event"><time>26</time><span><strong>Encontro de primavera</strong><small>Programação especial</small></span></div>
-          <span className="maintenance-focus-label">Atualização aplicada</span>
+          <div className="maintenance-banner"><small>Nova oferta</small><strong>Serviços organizados para cada momento.</strong></div>
+          <div className="maintenance-event"><time>SEO</time><span><strong>Rota pronta para busca</strong><small>Metadados e sitemap revisados</small></span></div>
+          <span className="maintenance-focus-label">Alteração simulada</span>
         </div>
       </div>
     </div>
@@ -141,9 +141,9 @@ const socialOptions = [
 ] as const;
 
 const socialContent = {
-  post: { label: "Peça estática", title: "Ideias que cabem na rotina.", meta: "Publicação de marca" },
-  carousel: { label: "Carrossel", title: "Três formas de organizar a semana.", meta: "Conteúdo em sequência" },
-  video: { label: "Vídeo curto", title: "Um processo, visto por dentro.", meta: "Edição vertical" },
+  post: { label: "Peça estática", title: "O que um site precisa explicar em oito segundos.", meta: "Série Clareza digital" },
+  carousel: { label: "Carrossel", title: "Da presença à operação em três etapas.", meta: "Série Serviços em prática" },
+  video: { label: "Vídeo curto", title: "Como nasce uma automação bem definida.", meta: "Série Por dentro do processo" },
 } as const;
 
 export function SocialDemo() {
@@ -153,7 +153,7 @@ export function SocialDemo() {
   return (
     <div className="service-demo service-demo-social">
       <div className="service-demo-heading">
-        <div><span>Estúdio de conteúdo</span><strong>Uma pauta, diferentes formatos</strong></div>
+        <div><span>Demonstração · Estúdio de conteúdo</span><strong>Felipe Lima Digital em diferentes formatos</strong></div>
         <DemoControls label="Formato de conteúdo" options={socialOptions} selected={format} onSelect={(value) => setFormat(value as keyof typeof socialContent)} />
       </div>
       <div className="social-workspace">
@@ -162,13 +162,13 @@ export function SocialDemo() {
           <i /><i /><i className="is-active" /><i /><i />
         </div>
         <div className={`social-phone format-${format}`} aria-live="polite">
-          <div className="social-phone-head"><b>norte.estúdio</b><i>•••</i></div>
-          <div className="social-content-art" aria-hidden="true">
+          <div className="social-phone-head"><b>felipelima.digital</b><i aria-hidden="true">•••</i></div>
+          <div className="social-content-art">
             <span className="social-content-label">{content.label}</span>
             <strong>{content.title}</strong>
             {format === "carousel" && <em>1 / 4</em>}
             {format === "video" && <i className="social-play">▶</i>}
-            <span className="social-art-shape" />
+            <span className="social-art-shape" aria-hidden="true" />
           </div>
           <div className="social-phone-foot"><span>♡ · ⌁ · ↗</span><small>{content.meta}</small></div>
         </div>
@@ -183,10 +183,10 @@ export function SocialDemo() {
 }
 
 const automationSteps = [
-  { id: "arrival", label: "Solicitação recebida", detail: "Um novo pedido inicia o fluxo ilustrativo." },
-  { id: "triage", label: "Triagem", detail: "O contexto é organizado para orientar a próxima etapa." },
-  { id: "record", label: "Registro", detail: "As informações seguem para o ponto definido no processo." },
-  { id: "route", label: "Encaminhamento", detail: "A tarefa é direcionada para a ação adequada." },
+  { id: "arrival", label: "Contato pelo site", detail: "A demonstração recebe objetivo, momento do negócio e serviço de interesse." },
+  { id: "triage", label: "Diagnóstico do pedido", detail: "O contexto é organizado antes de sugerir pacote, composição ou solução sob medida." },
+  { id: "record", label: "Proposta organizada", detail: "Escopo, entregáveis e responsabilidades seguem para uma proposta clara." },
+  { id: "route", label: "Acompanhamento", detail: "O próximo passo fica registrado para conduzir a conversa sem perder contexto." },
 ] as const;
 
 export function AutomationDemo() {
@@ -194,7 +194,7 @@ export function AutomationDemo() {
 
   return (
     <div className="service-demo service-demo-automation">
-      <DemoTopbar title="Fluxo ilustrativo · Atendimento" />
+      <DemoTopbar title="Demonstração · Fluxo de oportunidade" />
       <div className="automation-workspace">
         <div className="automation-flow" role="group" aria-label="Etapas do fluxo ilustrativo">
           {automationSteps.map((step, index) => (
@@ -226,21 +226,21 @@ export function AutomationDemo() {
 const aiRequests = [
   {
     id: "triage",
-    label: "Triar solicitação",
-    prompt: "Organize este pedido para o primeiro atendimento.",
-    response: "Interesse identificado: criação de site. Próximo passo sugerido: confirmar objetivo, conteúdo e integrações desejadas.",
+    label: "Organizar um briefing",
+    prompt: "Organize este pedido de uma nova página de serviços.",
+    response: "Objetivo identificado: apresentar ofertas com clareza. Próximo passo sugerido: confirmar públicos, prioridades, provas e chamadas para contato.",
   },
   {
     id: "summary",
-    label: "Resumir contexto",
-    prompt: "Resuma os pontos principais desta conversa.",
-    response: "Resumo ilustrativo: empresa em fase de reposicionamento, precisa apresentar serviços e facilitar contatos pelo WhatsApp.",
+    label: "Resumir um diagnóstico",
+    prompt: "Resuma os pontos principais desta análise de presença digital.",
+    response: "Resumo demonstrativo: a oferta existe, mas precisa de hierarquia, diferenciação entre pacotes e um próximo passo mais visível.",
   },
   {
     id: "route",
-    label: "Sugerir encaminhamento",
-    prompt: "Qual equipe deve analisar esta necessidade?",
-    response: "Encaminhamento ilustrativo: diagnóstico de automação, com levantamento prévio dos canais e das integrações envolvidas.",
+    label: "Sugerir próximo passo",
+    prompt: "Esta necessidade pede pacote ou solução personalizada?",
+    response: "Encaminhamento demonstrativo: iniciar pelo diagnóstico de automação, levantando processo, canais, volume e integrações antes do escopo.",
   },
 ] as const;
 
@@ -250,7 +250,7 @@ export function AiDemo() {
 
   return (
     <div className="service-demo service-demo-ai">
-      <DemoTopbar title="Assistente ilustrativo" />
+      <DemoTopbar title="Demonstração · Assistente de diagnóstico" />
       <div className="ai-workspace">
         <div className="ai-requests" role="group" aria-label="Solicitações de exemplo">
           <span>Escolha um exemplo</span>

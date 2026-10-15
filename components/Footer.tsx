@@ -1,6 +1,14 @@
 /* eslint-disable @next/next/no-html-link-for-pages -- Links nativos evitam uma falha de prefetch do adaptador Vinext atual. */
-import { contactLinks, navigation, services, siteConfig } from "../data/site";
+import { contactLinks, navigation, siteConfig } from "../data/site";
 import { Brand } from "./Navbar";
+
+const serviceLinks = [
+  { label: "Criação de sites", href: "/servicos#criacao-de-sites" },
+  { label: "Manutenção", href: "/servicos#manutencao" },
+  { label: "Redes sociais", href: "/servicos#redes-sociais" },
+  { label: "Automações", href: "/servicos#automacoes" },
+  { label: "Inteligência artificial", href: "/servicos#inteligencia-artificial" },
+] as const;
 
 export function Footer() {
   const socialLinks = [
@@ -23,7 +31,7 @@ export function Footer() {
         </div>
         <div className="footer-column">
           <h2>Serviços</h2>
-          {services.slice(0, 5).map((item) => <a key={item.index} href="/#servicos">{item.title}</a>)}
+          {serviceLinks.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
         </div>
         <div className="footer-column">
           <h2>Contato</h2>

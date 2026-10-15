@@ -260,12 +260,14 @@ export function BudgetWizard() {
   ];
 
   return (
-    <div
-      className="budget-overlay"
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) closeWizard();
-      }}
-    >
+    <div className="budget-overlay">
+      <button
+        className="budget-overlay-dismiss"
+        type="button"
+        tabIndex={-1}
+        aria-label="Fechar solicitação de orçamento"
+        onClick={closeWizard}
+      />
       <div
         className="budget-dialog"
         ref={dialogRef}

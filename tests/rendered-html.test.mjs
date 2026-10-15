@@ -88,8 +88,15 @@ test("server-renders the services, sites, blog, FlowLead, FieldOps and Nexo Agen
   assert.match(servicesHtml, /Conteúdo Essencial/);
   assert.match(servicesHtml, /Conteúdo Plus/);
   assert.match(servicesHtml, /Solicitar solução personalizada/);
+  assert.match(servicesHtml, /Demonstração · Página de serviço/);
+  assert.match(servicesHtml, /felipelima\.digital\/servicos/);
+  assert.match(servicesHtml, /presence-orbit\.webp/);
+  assert.match(servicesHtml, /continuity-field\.webp/);
+  assert.match(servicesHtml, /intelligent-flow\.webp/);
+  assert.match(servicesHtml, /href="\/servicos#criacao-de-sites"/);
   assert.equal((servicesHtml.match(/<a class="service-package-cta"/g) ?? []).length, 8);
   assert.doesNotMatch(servicesHtml, /R\$|mensalidade|desconto/i);
+  assert.doesNotMatch(servicesHtml, /Ateliê Horizonte|Casa Lume|norte\.estúdio/);
 
   assert.equal(sitesResponse.status, 200);
   assert.match(await sitesResponse.text(), /Seu site precisa fazer mais/);
