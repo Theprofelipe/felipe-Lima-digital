@@ -2358,3 +2358,46 @@
     transition: none;
   }
 }
+
+/* Warm champagne visual system */
+.flowlead-page { color: #211c16; background: #f7f2e8; }
+.flowlead-hero { background: radial-gradient(circle at 75% 24%,rgba(196,151,83,.2),transparent 29%),linear-gradient(180deg,#fffdf8,#f0e4d2); }
+.flowlead-hero-grid-pattern { opacity: .27; background-image: linear-gradient(rgba(107,77,39,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(107,77,39,.07) 1px,transparent 1px); }
+.flowlead-hero-glow-one { border-color: rgba(150,105,48,.14); box-shadow: inset 0 0 120px rgba(191,140,70,.11); }
+.flowlead-hero-glow-two { background: rgba(209,176,123,.14); }
+.flowlead-hero-copy h1,
+.flowlead-processing h2,
+.flowlead-result-heading h2,
+.flowlead-technical-heading h2,
+.flowlead-case-grid h2 { font-family: "Iowan Old Style","Palatino Linotype",Georgia,serif; font-weight: 500; }
+.flowlead-project-name,
+.flowlead-hero-copy h1 span,
+.flowlead-demo-kicker,
+.flowlead-card-label { color: #9c6f37; }
+.flowlead-product-window,
+.flowlead-floating-card,
+.flowlead-demo-shell,
+.flowlead-priority-card,
+.flowlead-panel-preview,
+.flowlead-message-card,
+.flowlead-timeline-card,
+.flowlead-boundary-card { border-color: rgba(111,79,41,.17); background: rgba(255,253,248,.84); box-shadow: 0 25px 64px rgba(92,63,29,.11); }
+.flowlead-window-bar,
+.flowlead-demo-topbar { color: #75624d; border-color: rgba(111,79,41,.14); background: #eee0ca; }
+.flowlead-problem-section,
+.flowlead-demo-section,
+.flowlead-case-section { background: #fffdf8; }
+.flowlead-steps-section,
+.flowlead-result,
+.flowlead-technical-section { color: #2e251d; background: #f0e4d2; }
+.flowlead-step-card,
+.flowlead-case-details > div { border-color: rgba(111,79,41,.16); background: rgba(255,253,248,.68); }
+.flowlead-submit,
+.flowlead-advance-button { color: #fffaf0; background: linear-gradient(135deg,#76532c,#a87b40); }
+.flowlead-submit:hover,
+.flowlead-advance-button:hover { background: #654520; }
+.flowlead-processing { color: #32271d; background: linear-gradient(145deg,#e3cdab,#fff6e8); }
+.flowlead-processing-orbit { border-color: rgba(117,83,41,.2); }
+.flowlead-final-cta { color: #2d241b; background: radial-gradient(circle at 50% 25%,rgba(255,255,255,.56),transparent 32%),linear-gradient(145deg,#ddc39a,#fff4e4 55%,#d2b17c); }
+.flowlead-final-orb { border-color: rgba(116,82,40,.18); }
+.flowlead-button-ghost { color: #684821; border-color: rgba(105,74,36,.28); background: rgba(255,252,244,.5); }

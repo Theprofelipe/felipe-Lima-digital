@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Felipe Lima Digital">
+  <defs>
+    <linearGradient id="surface" x1="8" y1="5" x2="57" y2="60" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f7f8f9"/>
+      <stop offset=".42" stop-color="#8f969f"/>
+      <stop offset=".72" stop-color="#d1b477"/>
+      <stop offset="1" stop-color="#272b31"/>
+    </linearGradient>
+    <linearGradient id="letters" x1="19" y1="17" x2="47" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff"/>
+      <stop offset=".45" stop-color="#e5e8eb"/>
+      <stop offset="1" stop-color="#fff4dc"/>
+    </linearGradient>
+  </defs>
+  <rect x="3" y="3" width="58" height="58" rx="16" fill="#1d2025"/>
+  <rect x="4" y="4" width="56" height="56" rx="15" fill="url(#surface)"/>
+  <path d="M18 17h17v6H25v6h9v6h-9v12h-7V17Zm21 0h7v24h10v6H39V17Z" fill="url(#letters)"/>
+  <path d="M10 53h44" stroke="#d9bd82" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

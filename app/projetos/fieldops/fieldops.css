@@ -2280,3 +2280,49 @@
     transform: none;
   }
 }
+
+/* Warm champagne visual system */
+.fieldops-page {
+  --fieldops-teal: #ad8145;
+  --fieldops-teal-dark: #74512b;
+  --fieldops-teal-soft: #efe2cc;
+  --fieldops-blue: #c09a62;
+  --fieldops-surface: #f7f2e8;
+  color: #211c16;
+  background: #f7f2e8;
+}
+.fieldops-page .button-primary { background: linear-gradient(135deg,#76532c,#a87b40); box-shadow: 0 13px 30px rgba(106,75,37,.2); }
+.fieldops-page .button-primary:hover { background: #654520; }
+.fieldops-hero { background: radial-gradient(circle at 78% 22%,rgba(196,151,83,.2),transparent 29%),linear-gradient(180deg,#fffdf8,#f0e4d2); }
+.fieldops-hero-grid-pattern { opacity: .28; background-image: linear-gradient(rgba(107,77,39,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(107,77,39,.07) 1px,transparent 1px); }
+.fieldops-hero-glow { border-color: rgba(150,105,48,.14); box-shadow: inset 0 0 120px rgba(191,140,70,.11); }
+.fieldops-hero-copy h1,
+.fieldops-demo-heading h2,
+.fieldops-technical-heading h2,
+.fieldops-problem-copy h2 { font-family: "Iowan Old Style","Palatino Linotype",Georgia,serif; font-weight: 500; }
+.fieldops-project-name,
+.fieldops-hero-copy h1 span { color: #9c6f37; }
+.fieldops-product-window,
+.fieldops-floating-card,
+.fieldops-demo-shell,
+.fieldops-details,
+.fieldops-coverage-card,
+.fieldops-boundaries-grid article { border-color: rgba(111,79,41,.17); background: rgba(255,253,248,.84); box-shadow: 0 25px 64px rgba(92,63,29,.11); }
+.fieldops-problem-section,
+.fieldops-demo-section,
+.fieldops-coverage-section { background: #fffdf8; }
+.fieldops-solution-section,
+.fieldops-flow-section { background: #f0e4d2; }
+.fieldops-technical-section { color: #2d241b; background: #e7d5b7; }
+.fieldops-demo-topbar,
+.fieldops-product-window > header { color: #75624d; border-color: rgba(111,79,41,.14); background: #eee0ca; }
+.fieldops-order-list,
+.fieldops-details-body,
+.fieldops-filters,
+.fieldops-materials,
+.fieldops-history { border-color: rgba(111,79,41,.15); background: rgba(255,253,248,.7); }
+.fieldops-release-button,
+.fieldops-advance-button { color: #fffaf0; background: linear-gradient(135deg,#76532c,#a87b40); }
+.fieldops-final-cta { color: #2d241b; background: radial-gradient(circle at 50% 25%,rgba(255,255,255,.56),transparent 32%),linear-gradient(145deg,#ddc39a,#fff4e4 55%,#d2b17c); }
+.fieldops-final-glow { background: rgba(205,163,98,.24); }
+.fieldops-button-ghost { color: #684821; border-color: rgba(105,74,36,.28); background: rgba(255,252,244,.5); }

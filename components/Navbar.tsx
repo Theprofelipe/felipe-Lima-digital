@@ -23,19 +23,32 @@ export function Navbar() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 18);
+    let frame = 0;
+    let lastScrolled = window.scrollY > 18;
+    const updateScrollState = () => {
+      frame = 0;
+      const nextScrolled = window.scrollY > 18;
+      if (nextScrolled !== lastScrolled) {
+        lastScrolled = nextScrolled;
+        setScrolled(nextScrolled);
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateScrollState);
+    };
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setOpen(false);
         menuButtonRef.current?.focus();
       }
     };
-    onScroll();
+    frame = window.requestAnimationFrame(updateScrollState);
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("keydown", onKey);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("keydown", onKey);
+      window.cancelAnimationFrame(frame);
     };
   }, []);
 

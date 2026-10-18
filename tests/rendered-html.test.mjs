@@ -90,9 +90,9 @@ test("server-renders the services, sites, blog, FlowLead, FieldOps and Nexo Agen
   assert.match(servicesHtml, /Solicitar solução personalizada/);
   assert.match(servicesHtml, /Demonstração · Página de serviço/);
   assert.match(servicesHtml, /felipelima\.digital\/servicos/);
-  assert.match(servicesHtml, /presence-orbit\.webp/);
-  assert.match(servicesHtml, /continuity-field\.webp/);
-  assert.match(servicesHtml, /intelligent-flow\.webp/);
+  assert.match(servicesHtml, /presence-orbit-chrome-v2\.webp/);
+  assert.match(servicesHtml, /continuity-field-chrome-v2\.webp/);
+  assert.match(servicesHtml, /intelligent-flow-chrome-v2\.webp/);
   assert.match(servicesHtml, /href="\/servicos#criacao-de-sites"/);
   assert.equal((servicesHtml.match(/<a class="service-package-cta"/g) ?? []).length, 8);
   assert.doesNotMatch(servicesHtml, /R\$|mensalidade|desconto/i);
@@ -179,7 +179,7 @@ test("keeps editable content centralized and optional assets resilient", async (
 
   await assert.rejects(access(new URL("app/_sites-preview", projectRoot)));
   await access(new URL("public/og.png", projectRoot));
-  await access(new URL("public/images/felipe-lima-machado-perfil.png", projectRoot));
+  await access(new URL("public/images/felipe-lima-machado-perfil.webp", projectRoot));
 });
 
 async function sourceFiles(directory) {
@@ -201,7 +201,7 @@ test("keeps the founder portrait in its single intended section", async () => {
     ...await sourceFiles(new URL("../components/", import.meta.url)),
   ];
   const sources = await Promise.all(files.map((file) => readFile(file, "utf8")));
-  const portraitReferences = sources.reduce((total, source) => total + (source.match(/felipe-lima-machado-perfil\.png/g) ?? []).length, 0);
+  const portraitReferences = sources.reduce((total, source) => total + (source.match(/felipe-lima-machado-perfil\.webp/g) ?? []).length, 0);
   const homePage = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
 
   assert.equal(portraitReferences, 1);

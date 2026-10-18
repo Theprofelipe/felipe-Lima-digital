@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { BudgetWizard } from "../components/BudgetWizard";
+import { SiteMotion } from "../components/SiteMotion";
 import { siteConfig } from "../data/site";
 import "./globals.css";
 
@@ -21,6 +22,10 @@ export async function generateMetadata(): Promise<Metadata> {
     authors: [{ name: siteConfig.name }],
     creator: siteConfig.name,
     category: "technology",
+    icons: {
+      icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+      shortcut: "/favicon.svg",
+    },
     openGraph: {
       type: "website",
       locale: "pt_BR",
@@ -55,6 +60,7 @@ export default function RootLayout({
       <body>
         <a className="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
         <div id="conteudo-principal" tabIndex={-1}>{children}</div>
+        <SiteMotion />
         <BudgetWizard />
       </body>
     </html>

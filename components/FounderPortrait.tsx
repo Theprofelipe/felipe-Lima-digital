@@ -23,8 +23,10 @@ export function FounderPortrait() {
         // eslint-disable-next-line @next/next/no-img-element
         <img
           ref={imageRef}
-          src="/images/felipe-lima-machado-perfil.png"
+          src="/images/felipe-lima-machado-perfil.webp"
           alt="Felipe Lima Machado"
+          loading="lazy"
+          decoding="async"
           onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
         />

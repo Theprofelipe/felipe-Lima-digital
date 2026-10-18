@@ -7,8 +7,9 @@ import {
   processSteps,
   services,
 } from "../data/site";
-import { AutomationConsole, HeroProductVisual, SiteDeviceVisual } from "./Visuals";
+import { AutomationConsole, SiteDeviceVisual } from "./Visuals";
 import { ContactCTA } from "./ContactCTA";
+import { EditorialHero } from "./EditorialHero";
 import { FounderPortrait } from "./FounderPortrait";
 import { ProjectsCarousel } from "./ProjectsCarousel";
 import { Reveal } from "./Reveal";
@@ -34,35 +35,7 @@ function SectionHeading({
 }
 
 export function Hero() {
-  return (
-    <section className="hero" id="inicio">
-      <div className="hero-grid-overlay" aria-hidden="true" />
-      <div className="hero-blur hero-blur-one" aria-hidden="true" />
-      <div className="hero-blur hero-blur-two" aria-hidden="true" />
-      <div className="container hero-grid">
-        <div className="hero-copy">
-          <span className="eyebrow hero-eyebrow"><i /> Desenvolvimento Web & IA</span>
-          <h1>Criamos tecnologia<br /><span>para empresas.</span></h1>
-          <p className="hero-lead">Desenvolvemos soluções digitais sob medida para o seu negócio.</p>
-          <p className="hero-support">Sites, sistemas, automações e soluções com Inteligência Artificial para transformar ideias em produtos digitais modernos, rápidos e escaláveis.</p>
-          <div className="hero-actions">
-            <a href={contactLinks.whatsapp} className="button button-primary" target="_blank" rel="noopener noreferrer" data-budget-wizard aria-haspopup="dialog">Solicitar orçamento <span>↗</span></a>
-            <a href="#projetos" className="button button-secondary">Ver projetos <span>↓</span></a>
-          </div>
-          <div className="founder-signature">
-            <div className="signature-monogram">FLM</div>
-            <p><span>Fundado por</span><strong>Felipe Lima Machado</strong></p>
-            <i />
-            <small>Estratégia, design<br />e desenvolvimento</small>
-          </div>
-        </div>
-        <div className="hero-visual-column">
-          <HeroProductVisual />
-        </div>
-      </div>
-      <a href="#servicos" className="scroll-cue" aria-label="Ir para serviços"><span>Explore</span><i /></a>
-    </section>
-  );
+  return <EditorialHero />;
 }
 
 export function Services() {

@@ -115,13 +115,16 @@ export default function ServicesPage() {
                   Planejar uma composição <span aria-hidden="true">↗</span>
                 </a>
               </div>
+              <div className="services-hero-signal" aria-label="Percurso dos serviços">
+                <span>Apresentar</span><i /><span>Manter</span><i /><span>Conectar</span>
+              </div>
             </div>
 
             <div className="services-journey-shell" data-service-parallax="0.08">
               <Image
                 className="services-journey-art"
-                src="/images/services/presence-orbit.webp"
-                alt="Composição autoral de planos translúcidos formando um portal digital violeta"
+                src="/images/services/presence-orbit-chrome-v2.webp"
+                alt="Composição autoral de planos translúcidos em prata e dourado champanhe"
                 fill
                 priority
                 sizes="(max-width: 1020px) 92vw, 42vw"
@@ -154,6 +157,16 @@ export default function ServicesPage() {
             <span>Oito pacotes em categorias independentes</span>
             <i />
             <span>Soluções personalizadas quando o problema pede outro caminho</span>
+          </div>
+        </section>
+
+        <section className="services-manifesto" aria-labelledby="services-manifesto-title">
+          <div className="container services-manifesto-layout">
+            <p id="services-manifesto-title">Uma identidade.<br />Três movimentos.</p>
+            <div className="services-manifesto-words" aria-hidden="true">
+              <span>Presença</span><span>Ritmo</span><span>Inteligência</span>
+            </div>
+            <p className="services-manifesto-copy">Cada categoria resolve uma etapa diferente. A composição nasce do momento do negócio, sem misturar escopos ou esconder o próximo passo.</p>
           </div>
         </section>
 
@@ -266,8 +279,8 @@ export default function ServicesPage() {
                 <div className="service-chapter-groups">
                   <figure className="service-chapter-visual" data-service-parallax="0.055" data-service-reveal>
                     <Image
-                      src="/images/services/continuity-field.webp"
-                      alt="Composição autoral de módulos editoriais conectados por um percurso azul"
+                      src="/images/services/continuity-field-chrome-v2.webp"
+                      alt="Composição autoral de módulos editoriais em vidro conectados por linhas metálicas"
                       fill
                       sizes="(max-width: 1020px) 92vw, 64vw"
                     />
@@ -307,7 +320,7 @@ export default function ServicesPage() {
                 <article className="custom-solution" data-service-reveal>
                   <Image
                     className="custom-solution-art"
-                    src="/images/services/intelligent-flow.webp"
+                    src="/images/services/intelligent-flow-chrome-v2.webp"
                     alt="Composição autoral de um fluxo de luz conectando módulos de vidro"
                     fill
                     sizes="(max-width: 1020px) 92vw, 64vw"

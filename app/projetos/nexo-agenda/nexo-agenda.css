@@ -669,3 +669,91 @@
     transition: none;
   }
 }
+
+/* Warm champagne visual system */
+.nexo-page {
+  --nexo-violet: #ad8145;
+  --nexo-violet-dark: #74512b;
+  --nexo-violet-soft: #efe2cc;
+  --nexo-blue: #c09a62;
+  --nexo-surface: #f7f2e8;
+  color: #211c16;
+  background: #f7f2e8;
+}
+.nexo-page .button-primary { background: linear-gradient(135deg,#76532c,#a87b40); box-shadow: 0 13px 30px rgba(106,75,37,.2); }
+.nexo-page .button-primary:hover { background: #654520; }
+.nexo-hero { background: radial-gradient(circle at 79% 24%,rgba(196,151,83,.2),transparent 30%),linear-gradient(180deg,#fffdf8,#f0e4d2); }
+.nexo-hero-grid-pattern { opacity: .28; background-image: linear-gradient(rgba(107,77,39,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(107,77,39,.07) 1px,transparent 1px); }
+.nexo-hero-glow { border-color: rgba(150,105,48,.14); box-shadow: inset 0 0 120px rgba(191,140,70,.11); }
+.nexo-hero-copy h1,
+.nexo-demo-heading h2,
+.nexo-technical-heading h2,
+.nexo-problem-grid h2 { font-family: "Iowan Old Style","Palatino Linotype",Georgia,serif; font-weight: 500; }
+.nexo-project-name,
+.nexo-hero-copy h1 span { color: #9c6f37; }
+.nexo-product-window,
+.nexo-floating-card,
+.nexo-demo-shell,
+.nexo-calendar,
+.nexo-details,
+.nexo-audience-card,
+.nexo-boundaries-grid article { border-color: rgba(111,79,41,.17); background: rgba(255,253,248,.84); box-shadow: 0 25px 64px rgba(92,63,29,.11); }
+.nexo-product-window > header,
+.nexo-demo-header { color: #75624d; border-color: rgba(111,79,41,.14); background: #eee0ca; }
+.nexo-problem-section,
+.nexo-flow-section { background: #fffdf8; }
+.nexo-capabilities-section,
+.nexo-demo-section,
+.nexo-build-section,
+.nexo-audience-section { background: #f0e4d2; }
+.nexo-solution-callout,
+.nexo-calendar-empty-state,
+.nexo-booking-card,
+.nexo-contact-card,
+.nexo-form-context,
+.nexo-opportunity { border-color: rgba(111,79,41,.16); background: #f3e6d2; }
+.nexo-reminder { color: #3a2d20; background: #e1c69d; }
+.nexo-technical-section { color: #2d241b; background: #e7d5b7; }
+.nexo-final-cta { color: #2d241b; background: radial-gradient(circle at 50% 25%,rgba(255,255,255,.56),transparent 32%),linear-gradient(145deg,#ddc39a,#fff4e4 55%,#d2b17c); }
+.nexo-final-glow { background: rgba(205,163,98,.24); }
+.nexo-button-ghost { color: #684821; border-color: rgba(105,74,36,.28); background: rgba(255,252,244,.5); }
+.nexo-page * { border-color: rgba(111,79,41,.16) !important; }
+.nexo-hero-glow { background: rgba(190,143,76,.12); }
+.nexo-hero-meta span { color: #71512d; background: rgba(255,252,245,.62); }
+.nexo-local-proof i { color: #fffaf0; background: #a77a3f; }
+.nexo-hero-orbit { border-color: rgba(140,99,47,.16); }
+.nexo-hero-orbit i { background: #b8874a; box-shadow: 0 0 0 7px rgba(184,135,74,.11); }
+.nexo-product-body > strong,
+.nexo-product-agenda i { color: #76532c; border-color: rgba(126,88,41,.22); background: #ead8bb; }
+.nexo-product-body > i.is-active { background: rgba(185,135,74,.9); }
+.nexo-product-agenda em.is-service { color: #75502a; background: #ecdbc0; }
+.nexo-problem-copy > div span { color: #6a5743; border-color: rgba(120,85,42,.18); background: #f4e8d7; }
+.nexo-capabilities-grid article { border-color: rgba(111,79,41,.16); background: rgba(255,253,248,.68); }
+.nexo-product-body > strong,
+.nexo-product-agenda i,
+.nexo-calendar-grid-head i,
+.nexo-booking-card small,
+.nexo-booking-card b,
+.nexo-waitlist > strong,
+.nexo-waitlist-list span,
+.nexo-tech-grid article > i { color: #76532c !important; }
+.nexo-product-body > i.is-active,
+.nexo-demo-brand span,
+.nexo-tech-grid article > i { background: #a97b40 !important; }
+.nexo-free-slot span { background: #d9bd8c !important; }
+.nexo-day-tabs button.is-active { color: #684721; background: #ead8ba !important; }
+.nexo-calendar-legend i.is-free { background: #d9bd8c !important; }
+.nexo-waitlist-list article,
+.nexo-metrics article,
+.nexo-tech-grid article { background: rgba(255,253,248,.72); }
+.nexo-product-body strong,
+.nexo-waitlist strong { color: #76532c !important; }
+.nexo-product-body i.is-active { background: #a97b40 !important; }
+.nexo-page article.is-active li i { color: #fffaf0 !important; background: rgba(169,123,64,.2) !important; }
+.nexo-product-body > aside { background: linear-gradient(180deg,#73512c,#a77a3f); }
+.nexo-product-body > aside strong { color: #76532c !important; background: #fff8ec; }
+.nexo-product-body > aside i { background: rgba(255,249,238,.24); }
+.nexo-product-body > aside i.is-active { background: #e0bf86 !important; box-shadow: 0 0 16px rgba(224,191,134,.5); }
+.nexo-product-days span { color: #756553; background: #eee1ce; }
+.nexo-product-days span.is-current { color: #fffaf0; background: #a77a3f; }
+.nexo-floating-reminder > i { background: radial-gradient(circle at 50% 42%,#fff 0 10%,#ad7d40 11% 100%); box-shadow: 0 0 0 6px rgba(173,125,64,.1); }

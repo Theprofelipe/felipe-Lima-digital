@@ -85,7 +85,7 @@ Preencha os endereços em `siteConfig.social`. Links vazios não são exibidos.
 Adicione a fotografia otimizada neste caminho:
 
 ```text
-public/images/felipe-lima-machado-perfil.png
+public/images/felipe-lima-machado-perfil.webp
 ```
 
 A fotografia oficial é usada somente no bloco do fundador. Sem o arquivo, um placeholder institucional permanece visível.

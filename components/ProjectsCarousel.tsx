@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { projects } from "../data/site";
 
 export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
   const trackRef = useRef<HTMLDivElement>(null);
+  const scrollFrameRef = useRef(0);
   const [active, setActive] = useState(0);
   const featuredProject = projects.find((project) => project.slug === "flowlead");
   const visibleProjects = compact
@@ -21,15 +22,21 @@ export function ProjectsCarousel({ compact = false }: { compact?: boolean }) {
     setActive(next);
   };
 
+  useEffect(() => () => window.cancelAnimationFrame(scrollFrameRef.current), []);
+
   const onScroll = () => {
-    const track = trackRef.current;
-    if (!track) return;
-    const slides = Array.from(track.children) as HTMLElement[];
-    const closest = slides.reduce((best, slide, index) => {
-      const distance = Math.abs(slide.offsetLeft - track.scrollLeft);
-      return distance < best.distance ? { index, distance } : best;
-    }, { index: 0, distance: Number.POSITIVE_INFINITY });
-    setActive(closest.index);
+    if (scrollFrameRef.current) return;
+    scrollFrameRef.current = window.requestAnimationFrame(() => {
+      scrollFrameRef.current = 0;
+      const track = trackRef.current;
+      if (!track) return;
+      const slides = Array.from(track.children) as HTMLElement[];
+      const closest = slides.reduce((best, slide, index) => {
+        const distance = Math.abs(slide.offsetLeft - track.scrollLeft);
+        return distance < best.distance ? { index, distance } : best;
+      }, { index: 0, distance: Number.POSITIVE_INFINITY });
+      setActive((current) => current === closest.index ? current : closest.index);
+    });
   };
 
   return (
